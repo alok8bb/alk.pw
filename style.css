@@ -2,17 +2,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 :root {
-  --primary: #f9ffa4;
+  --primary: #dbb1de;
 }
 
 body {
-  background-color: black;
+  background-color: rgb(23, 25, 29);
   color: #bebab5;
   font-family: "Inter", sans-serif;
 }
 
 a:link,
 a:visited {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
   color: var(--primary);
 }
 
@@ -29,6 +35,24 @@ u {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+@media (max-width: 800px) {
+  #main {
+    width: 40vh;
+  }
+}
+
+@media (max-width: 390px) {
+  #main {
+    width: 30vh;
+  }
+}
+
+@media (min-width: 900px) {
+  #main {
+    width: 70vh;
+  }
 }
 
 #avatar {
