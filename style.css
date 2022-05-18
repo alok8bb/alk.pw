@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 :root {
-  --primary: #dbb1de;
+  --primary: #f9ffa4;
 }
 
 body {
@@ -51,7 +51,7 @@ u {
 
 @media (min-width: 900px) {
   #main {
-    width: 70vh;
+    width: 92vh;
   }
 }
 
