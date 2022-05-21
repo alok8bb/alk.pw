@@ -28,7 +28,7 @@ u {
   font-family: "Poppins", sans-serif;
 }
 
-#main {
+.main {
   margin: 0;
   position: absolute;
   top: 50%;
@@ -37,24 +37,17 @@ u {
   transform: translate(-50%, -50%);
 }
 
-@media (max-width: 800px) {
-  #main {
-    width: 40vh;
+@media only screen and (max-width: 400px) {
+  .main {
+    width: 35vh;
   }
 }
 
-@media (max-width: 390px) {
-  #main {
+@media only screen and (max-width: 350px) {
+  .main {
     width: 30vh;
   }
 }
-
-@media (min-width: 900px) {
-  #main {
-    width: 92vh;
-  }
-}
-
 #avatar {
   border-radius: 50%;
   width: 150px;
