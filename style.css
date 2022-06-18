@@ -37,6 +37,11 @@ u {
   transform: translate(-50%, -50%);
 }
 
+@media only screen and (max-width: 500px) {
+  .main {
+    width: 40vh;
+  }
+}
 @media only screen and (max-width: 400px) {
   .main {
     width: 35vh;
