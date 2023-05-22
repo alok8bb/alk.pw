@@ -3,7 +3,7 @@ import { css } from "@emotion/css";
 
 export const HomePage = () => {
     return (
-        <PageContainer>
+        <PageContainer id="home">
             <div
                 className={css`
                     display: flex;
@@ -58,9 +58,7 @@ export const HomePage = () => {
                     <br />I started exploring programming and delved into the
                     Linux world back in 2020. Since then, I've learned a lot and
                     developed a keen interest in building web back-ends and
-                    working on related projects. Along the way, I've also tried
-                    my hand at creating Android applications using Kotlin. It's
-                    been an exciting journey, and I've enjoyed every step of it.
+                    working on related projects.
                     <br />
                     <br />
                     Scroll down to see my projects and contact information!
