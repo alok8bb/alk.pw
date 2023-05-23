@@ -3,19 +3,19 @@ import { css } from "@emotion/css";
 interface LinkProps {
     link: string;
     title: string;
-    selected: boolean;
+    id: string;
 }
 
-const StyledLink: React.FC<LinkProps> = ({ link, title, selected }) => {
+const StyledLink: React.FC<LinkProps> = ({ link, title, id }) => {
     return (
         <a
+            id={id}
             href={link}
             className={css`
                 text-decoration: none;
-                color: ${selected ? "#e9f8f9" : "#4f5050"};
                 font-family: "Roboto Mono", monospace;
-                font-weight: 550;
                 letter-spacing: 1px;
+                color: #4f5050;
             `}
         >
             {title}
@@ -56,17 +56,22 @@ export const NavBar = () => {
                     height: 40%;
                     justify-content: space-evenly;
                     align-items: center;
+
+                    .selected {
+                        color: #e9f8f9;
+                        font-weight: bold;
+                    }
                 `}
             >
-                <StyledLink link="#home" title="Home" selected={true} />
+                <StyledLink id="nav-home" link="#home" title="Home" />
                 <VerticalLine />
                 <StyledLink
+                    id="nav-projects"
                     link="#projects"
                     title="Projects"
-                    selected={false}
                 />
                 <VerticalLine />
-                <StyledLink link="#contact" title="Contact" selected={false} />
+                <StyledLink id="nav-contact" link="#contact" title="Contact" />
             </nav>
         </div>
     );
