@@ -1,9 +1,12 @@
-import "./App.css";
+import { Route } from "wouter";
+import { Home } from "./pages/Home";
+import { Posts } from "./pages/Posts";
 
 function App() {
     return (
         <>
-            <p className="text-3xl">Alok's New Personal Site</p>
+            <Route path="/" component={Home} />
+            <Route path="/posts" component={Posts} />
         </>
     );
 }
