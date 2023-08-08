@@ -34,6 +34,7 @@ export const NavBar = () => {
                     </li>
                 </ul>
             </nav>
+            <img src="/assets/sun.svg" />
         </header>
     );
 };
