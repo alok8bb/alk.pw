@@ -7,12 +7,12 @@ export const Home = () => {
     return (
         <>
             <NavBar />
-            <div className="flex flex-col gap-20">
+            <div className="flex flex-col gap-16 md:gap-20">
                 <article className="flex flex-col gap-8">
                     <h1 className="text-5xl font-bold tracking-wide">
                         Alok Pawar
                     </h1>
-                    <h2 className="max-w-[70ch] leading-6 text-zinc-800 dark:text-zinc-300">
+                    <h2 className="max-w-[70ch] leading-6 text-zinc-800 dark:text-zinc-400">
                         Hey there! I'm an 18 y.o Computer Science Student from
                         India. I am a passionate programmer and tech-enthusiast
                         interested in networking, low-level and systems

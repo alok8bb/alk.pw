@@ -12,7 +12,7 @@ function App() {
     }, []);
 
     return (
-        <div className="mx-auto flex flex-col min-h-screen max-w-[872px] gap-9 p-4 md:gap-20 md:py-16 ">
+        <div className="mx-auto flex flex-col min-h-screen max-w-[872px] gap-14 p-4 md:gap-20 md:py-16 ">
             <Route path="/" component={Home} />
             <Route path="/posts" component={Posts} />
         </div>

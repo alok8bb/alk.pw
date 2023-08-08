@@ -9,7 +9,9 @@ export const SectionHeader: React.FC<SectionProps> = ({
 }) => {
     return (
         <header className="flex w-full justify-between gap-2">
-            <h3>{title}</h3>
+            <h3 className="text-xl text-zinc-800 dark:text-zinc-200">
+                {title}
+            </h3>
             {button_link && (
                 <a
                     className="cursor-pointer underline decoration-dashed underline-offset-8"
