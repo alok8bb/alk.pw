@@ -1,4 +1,9 @@
+import { useAtom } from "jotai";
+import { themeAtom } from "../utils/theme";
+import { Sun, Moon } from "./Icons";
+
 export const NavBar = () => {
+    const [theme, setTheme] = useAtom(themeAtom);
     return (
         <header className="z-40 flex w-full flex-col gap-2 md:flex-row md:justify-between">
             <a className="hover:text-neutral-100" href="mailto:alok@alk.pw">
@@ -29,12 +34,19 @@ export const NavBar = () => {
                             className="hover:text-neutral-100 text-netural-100"
                             href="/projects"
                         >
-                            Projects
+                            About
                         </a>
                     </li>
                 </ul>
             </nav>
-            <img src="/assets/sun.svg" />
+            <div
+                onClick={() => {
+                    setTheme(theme == "light" ? "dark" : "light");
+                }}
+                className="hover:cursor-pointer"
+            >
+                {theme == "light" ? <Sun /> : <Moon />}
+            </div>
         </header>
     );
 };

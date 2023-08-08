@@ -4,7 +4,7 @@
 
 @layer base {
     #root {
-        @apply mx-auto flex flex-col min-h-screen max-w-[872px] gap-9 md:gap-20 md:py-16;
+        @apply text-black bg-white dark:text-white dark:bg-black h-full w-full duration-300 transition-colors;
     }
 }
 
