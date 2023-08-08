@@ -9,8 +9,10 @@ export const Home = () => {
             <NavBar />
             <div className="flex flex-col gap-20">
                 <article className="flex flex-col gap-8">
-                    <h1 className="text-3xl text-bold">Alok Pawar</h1>
-                    <h2 className="max-w-[70ch] leading-6">
+                    <h1 className="text-5xl font-bold tracking-wide">
+                        Alok Pawar
+                    </h1>
+                    <h2 className="max-w-[70ch] leading-6 text-zinc-800 dark:text-zinc-300">
                         Hey there! I'm an 18 y.o Computer Science Student from
                         India. I am a passionate programmer and tech-enthusiast
                         interested in networking, low-level and systems
@@ -28,7 +30,7 @@ export const Home = () => {
                 <section className="flex flex-col gap-8">
                     <SectionHeader
                         title="Highlighted Projects"
-                        button_link="/projects"
+                        button_link="https://github.com/alok8bb"
                     />
                     <div className="flex flex-col gap-2 md:flex-row w-full"></div>
                 </section>

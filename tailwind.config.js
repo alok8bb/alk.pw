@@ -3,7 +3,14 @@ export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     darkMode: "class",
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                zinc: {
+                    black: "#09090b",
+                    white: "#fafafa",
+                },
+            },
+        },
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/line-clamp")],
 };
