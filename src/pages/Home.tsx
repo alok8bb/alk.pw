@@ -40,6 +40,14 @@ export const Home = () => {
                         <ProjectCard />
                     </div>
                 </section>
+
+                <footer className="flex gap-6 flex-col">
+                    <hr className="border-dashed border-zinc-800 dark:border-zinc-400"></hr>
+                    <div className="flex flex-row justify-between">
+                        <p>© 2023 by Alok Pawar</p>
+                        <a href="">Updated on 20 Aug 2023</a>
+                    </div>
+                </footer>
             </div>
         </>
     );

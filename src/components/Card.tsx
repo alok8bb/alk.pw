@@ -11,7 +11,7 @@ export const PostCard = () => {
                     </p>
                 </div>
             </div>
-            <p className="line-clamp-3 text-sm md:text-base text-zinc-600 dark:text-zinc-400 ">
+            <p className="line-clamp-2 text-sm md:text-base text-zinc-600 dark:text-zinc-400 ">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
                 labore eum optio iste asperiores doloribus animi a sit facere
             </p>
@@ -39,13 +39,13 @@ export const ProjectCard = () => {
                     <div className="text-sm flex gap-3">
                         <a
                             href=""
-                            className="hover:cursor-pointer hover:text-zinc-200"
+                            className="hover:cursor-pointer hover:text-zinc-800 dark:hover:text-zinc-200"
                         >
                             Live Demo
                         </a>
                         <a
                             href=""
-                            className="hover:cursor-pointer hover:text-zinc-200"
+                            className="hover:cursor-pointer hover:text-zinc-800 dark:hover:text-zinc-200"
                         >
                             Source
                         </a>
