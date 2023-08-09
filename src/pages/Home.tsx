@@ -1,4 +1,4 @@
-import { PostCard } from "../components/Card";
+import { PostCard, ProjectCard } from "../components/Card";
 import { NavBar } from "../components/Navbar";
 import { SectionHeader } from "../components/Section";
 import { SocialLinks } from "../components/SocialLinks";
@@ -32,7 +32,13 @@ export const Home = () => {
                         title="Highlighted Projects"
                         button_link="https://github.com/alok8bb"
                     />
-                    <div className="flex flex-col gap-2 md:flex-row w-full"></div>
+
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 w-full">
+                        <ProjectCard />
+                        <ProjectCard />
+                        <ProjectCard />
+                        <ProjectCard />
+                    </div>
                 </section>
             </div>
         </>
