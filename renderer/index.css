@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    #react-root {
+        @apply text-zinc-black bg-zinc-white dark:text-zinc-white dark:bg-zinc-black h-full w-full duration-300 transition-colors;
+    }
+}
