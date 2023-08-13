@@ -21,7 +21,7 @@ export const PostCard = () => {
 
 export const ProjectCard = () => {
     return (
-        <a className="flex md:w-full flex-col gap-2 rounded-md border border-zinc-400 dark:border-zinc-700 p-4 transition-all hover:-translate-y-2">
+        <div className="flex md:w-full flex-col gap-2 rounded-md border border-zinc-400 dark:border-zinc-700 p-4 transition-all hover:-translate-y-2">
             <div className="flex flex-col flex-wrap justify-between gap-2 text-zinc-900 dark:text-zinc-300">
                 <div className="flex flex-row justify-between">
                     <h5 className="text-base md:text-lg font-semibold tracking-wide truncate">
@@ -52,6 +52,6 @@ export const ProjectCard = () => {
                     </div>
                 </div>
             </div>
-        </a>
+        </div>
     );
 };

@@ -9,6 +9,8 @@ function changeTheme(theme: Theme) {
 }
 
 function getSavedTheme(): Theme {
+    if (typeof localStorage == "undefined") return "dark";
+
     if (
         localStorage.theme === "dark" ||
         (!("theme" in localStorage) &&

@@ -1,5 +1,5 @@
 import { PostCard, ProjectCard } from "../../components/Card";
-import { NavBar } from "../../components/Navbar";
+import { ClientOnly, Loading } from "../../components/ClientOnly";
 import { SectionHeader } from "../../components/Section";
 import { SocialLinks } from "../../components/SocialLinks";
 
@@ -8,7 +8,10 @@ export { Page };
 const Page = () => {
     return (
         <>
-            <NavBar />
+            <ClientOnly
+                component={() => import("../../components/Navbar")}
+                fallback={<Loading />}
+            />
             <div className="flex flex-col gap-16 md:gap-20">
                 <article className="flex flex-col gap-8">
                     <h1 className="text-5xl font-bold tracking-wide">

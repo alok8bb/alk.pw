@@ -1,9 +1,19 @@
-import { useAtom } from "jotai";
-import { themeAtom } from "./theme";
 import { Sun, Moon } from "./Icons";
+import { useEffect } from "react";
+import { themeAtom } from "./theme";
+import { useAtom } from "jotai";
 
-export const NavBar = () => {
+const NavBar = () => {
     const [theme, setTheme] = useAtom(themeAtom);
+
+    useEffect(() => {
+        if (theme == "light") {
+            document.documentElement.classList.remove("dark");
+        } else {
+            document.documentElement.classList.add("dark");
+        }
+    }, [theme]);
+
     return (
         <header className="z-40 flex w-full justify-between gap-2 md:flex-row md:justify-betweentext-zinc-700 dark:text-zinc-300">
             <a href="mailto:alok@alk.pw">alok@alk.pw</a>
@@ -25,6 +35,8 @@ export const NavBar = () => {
             <div
                 onClick={() => {
                     setTheme(theme == "light" ? "dark" : "light");
+
+                    // switchTheme();
                 }}
                 className="hover:cursor-pointer"
             >
@@ -33,3 +45,5 @@ export const NavBar = () => {
         </header>
     );
 };
+
+export default NavBar;
