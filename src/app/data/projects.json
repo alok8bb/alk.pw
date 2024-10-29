@@ -1,31 +1,30 @@
 [
-  {
-    "title": "cloneit",
-    "description": "A CLI tool to download specific GitHub directories or files",
-    "tags": ["rust", "cli"],
-    "liveDemo": "",
-    "source": "https://github.com/alok8bb/cloneit"
-  },
-  {
-    "title": "BlockBack",
-    "description": "A crowdfunding dapp with solidity and reactjs",
-    "tags": ["solidity", "nextjs"],
-    "liveDemo": "https://blockback.alk.pw",
-    "source": "https://github.com/alok8bb/blockback"
-  }
-  ,
-  {
-    "title": "Solaris Board",
-    "description": "web dashboard for essential things - solana blockchain",
-    "tags": ["@solana/web3.js", "nextjs"],
-    "liveDemo": "https://solaris-board.alk.pw",
-    "source": "https://github.com/alok8bb/solaris-board"
-  },
-  {
-    "title": "Brokenstack",
-    "description": "personal blog with astro and tailwind",
-    "tags": ["astro", "tailwind"],
-    "liveDemo": "https://blog.alk.pw",
-    "source": "https://github.com/alok8bb/brokenstack"
-  }
+	{
+		"title": "cloneit",
+		"description": "A CLI tool to download specific GitHub directories or files",
+		"tags": ["rust", "cli"],
+		"liveDemo": "",
+		"source": "https://github.com/alok8bb/cloneit"
+	},
+	{
+		"title": "BlockBack",
+		"description": "A crowdfunding dapp with solidity and reactjs",
+		"tags": ["solidity", "nextjs"],
+		"liveDemo": "https://blockback.alk.pw",
+		"source": "https://github.com/alok8bb/blockback"
+	},
+	{
+		"title": "Solaris Board",
+		"description": "web dashboard for essential things - solana blockchain",
+		"tags": ["@solana/web3.js", "nextjs"],
+		"liveDemo": "https://solaris-board.alk.pw",
+		"source": "https://github.com/alok8bb/solaris-board"
+	},
+	{
+		"title": "Brokenstack",
+		"description": "personal blog with astro and tailwind",
+		"tags": ["astro", "tailwind"],
+		"liveDemo": "https://blog.alk.pw",
+		"source": "https://github.com/alok8bb/brokenstack"
+	}
 ]
