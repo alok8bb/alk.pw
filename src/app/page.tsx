@@ -200,22 +200,6 @@ export default function Component() {
 								<Github size={28} />
 							</a>
 							<a
-								href="https://broken_vortex.t.me/"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="text-gray-400 hover:text-white transition-colors"
-							>
-								<Send size={28} />
-							</a>
-							<a
-								href="https://linkedin.com/in/alok8bb"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="text-gray-400 hover:text-white transition-colors"
-							>
-								<Linkedin size={28} />
-							</a>
-							<a
 								href="mailto:alok8bb@gmail.com"
 								target="_blank"
 								rel="noopener noreferrer"
