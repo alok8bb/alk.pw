@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import AnimatedText from "./components/AnimatedText";
 import Card from "./components/Card";
 import projectsData from "./data/projects.json";
+import { ExperienceEntry } from "./components/ExperienceEntry";
 
 export default function Component() {
 	return (
@@ -136,51 +137,25 @@ export default function Component() {
 					<section id="experience" className="mb-20">
 						<h2 className="text-3xl font-semibold mb-8">Experience</h2>
 						<div className="space-y-6 relative">
+							{/* Vertical Line */}
 							<div className="absolute left-0 top-0 bottom-0 w-px bg-gray-700"></div>
-							<div className="flex flex-col sm:flex-row">
-								<div className="flex-grow pl-6 mb-4 sm:mb-0">
-									<p>
-										Created an online gaming <strong>DApp</strong> and other
-										decentralized applications for gaming tokens
-									</p>
-									<p className="text-base text-gray-400 mt-2">2024</p>
-								</div>
-								<div className="flex-grow pl-6">
-									<p>
-										Developed various <strong>Telegram bots</strong> (gaming,
-										token-gated) and utility bots like{" "}
-										<a
-											href="https://dexscreener.com/ethereum/0xdc7d16b1e7c54f35a67af95d5a6eecaec27b2a62"
+
+							<ExperienceEntry title="Developer, Paystream Finance" duration="Mar 2025 - Current" />
+							<ExperienceEntry title="Web Developer, 株式会社HumAIn" duration="Oct 2024 - Feb 2025" />
+							<ExperienceEntry title="Blockchain & Bot Developer, Freelance" duration="2023-2024" description={
+								<div>
+									<ul className="list-none">
+										<li className="relative pl-4 before:content-['-'] before:absolute before:left-0">Created an online gaming DApp and other decentralized applications for gaming tokens</li>
+										<li className="relative pl-4 before:content-['-'] before:absolute before:left-0">Developed various Telegram bots (gaming, token-gated, group-management) and utility bots like <a href="https://dexscreener.com/ethereum/0xdc7d16b1e7c54f35a67af95d5a6eecaec27b2a62"
 											target="_blank"
 											rel="noopener noreferrer"
-											className="text-blue-400 hover:underline"
-										>
-											<strong>$PULSE AI</strong>
-										</a>
-										, which surpassed $1M in total market cap
-									</p>
-									<p className="text-base text-gray-400 mt-2">2024</p>
+											className="text-blue-400 hover:underline" >$PULSE AI</a>, that surpassed $1M in total market cap</li>
+									</ul>
 								</div>
-							</div>
-							<div className="flex items-center">
-								<div className="flex-grow pl-6">
-									<p>
-										Created and deployed <strong>websites</strong> for clients,
-										focusing on responsive design and optimal user experience
-									</p>
-									<p className="text-base text-gray-400 mt-2">2022-2023</p>
-								</div>
-							</div>
-							<div className="flex items-center">
-								<div className="flex-grow pl-6">
-									<p>
-										Worked as a freelancer, built multiple different{" "}
-										<strong>mobile apps</strong> using <strong>Kotlin</strong>{" "}
-										and <strong>Android SDK</strong>
-									</p>
-									<p className="text-base text-gray-400 mt-2">2021-2022</p>
-								</div>
-							</div>
+							} />
+							<ExperienceEntry title="Web Developer, Freelance" duration="2022-2023" description={"Created and deployed websites for clients, focusing on responsive design and optimal user experience"} />
+							<ExperienceEntry title="Mobile Developer, Freelance" duration="2021-2022" description={"Built various mobile apps using Kotlin and Android SDK with video streaming, chat, calling, etc. features for small startups"}
+							/>
 						</div>
 					</section>
 
