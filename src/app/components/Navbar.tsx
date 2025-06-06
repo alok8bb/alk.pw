@@ -12,7 +12,7 @@ const Navbar = () => {
 					<span>アロック</span>
 				</a>
 				<div className="absolute left-0 mt-2 w-64 p-2 bg-gray-800 text-white text-sm rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
-					my name in jap, looks cool doesn't it?
+					my name in jap, looks cool right?
 				</div>
 			</div>
 			<nav className="flex flex-wrap justify-center items-center gap-4">

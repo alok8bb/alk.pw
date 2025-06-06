@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({
 			{date && <p className="text-sm text-gray-400 mb-2">{date}</p>}
 			<p className="text-base text-gray-300 mb-4">{description}</p>
 			{tags && (
-				<div className="flex flex-wrap gap-2 mb-2">
+				<span className="flex flex-wrap gap-2 mb-2">
 					{tags.map((tag, index) => (
 						<span
 							key={index}
@@ -32,10 +32,10 @@ const Card: React.FC<CardProps> = ({
 							#{tag}
 						</span>
 					))}
-				</div>
+				</span>
 			)}
 			{(liveDemo || source) && (
-				<div className="flex space-x-4 text-sm">
+				<span className="flex space-x-4 text-sm">
 					{liveDemo && (
 						<a
 							href={liveDemo}
@@ -52,7 +52,7 @@ const Card: React.FC<CardProps> = ({
 							Source
 						</a>
 					)}
-				</div>
+				</span >
 			)}
 		</div>
 	);

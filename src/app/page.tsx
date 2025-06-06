@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "motion/react"
 import { Github, Send, Linkedin, Mail, Twitter } from "lucide-react";
 import Navbar from "./components/Navbar";
 import AnimatedText from "./components/AnimatedText";
@@ -21,30 +22,51 @@ export default function Component() {
 				<Navbar />
 
 				<main className="text-lg sm:text-xl">
-					<section
+					<motion.section
 						id="home"
 						className="mb-20 flex flex-col sm:flex-row items-center gap-10 mt-20"
+						initial={{ opacity: 0, y: 40 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.7, delay: 0.03 }}
 					>
-						<div className="w-24 h-24 flex-shrink-0 relative group sm:hidden mb-4">
+						<motion.div
+							className="w-24 h-24 flex-shrink-0 relative group sm:hidden mb-4"
+							initial={{ opacity: 0, y: 40 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.7, delay: 0.06 }}
+						>
 							<img
 								src="https://i.imgur.com/SZ360h1.png"
 								alt="Profile Picture"
 								className="w-full h-full rounded-full object-cover relative z-10 transition-transform duration-300 ease-in-out group-hover:scale-105 cursor-pointer"
 							/>
-						</div>
-						<div className="flex-1">
+						</motion.div>
+						<motion.div
+							className="flex-1"
+							initial={{ opacity: 0, y: 40 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.7, delay: 0.09 }}
+						>
 							<AnimatedText />
-							<div className="glitch-wrapper mb-10">
+							<motion.div
+								className="glitch-wrapper mb-10"
+								initial={{ opacity: 0, y: 40 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.7, delay: 0.12 }}
+							>
 								<p
 									className="text-xl sm:text-2xl text-gray-400 glitch layers text-center sm:text-left"
 									data-text="programmer | web & web3"
 								>
 									<span>Welcome to my personal website!</span>
 								</p>
-							</div>
-							<p
+							</motion.div>
+							<motion.p
 								id="about"
 								className="mb-8 text-center sm:text-left leading-relaxed"
+								initial={{ opacity: 0, y: 40 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.7, delay: 0.15 }}
 							>
 								I'm a 20-year-old CS Student based in India. My primary focus is
 								on <b>TypeScript, Rust, and Python</b> with past experience in
@@ -53,18 +75,25 @@ export default function Component() {
 								have experience building, deploying, and managing websites,
 								bots, apps, and services. <br />
 								Looking forward to new opportunities and collaborations!
-							</p>
-						</div>
-						<div className="w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0 self-center relative group hidden sm:block">
+							</motion.p>
+						</motion.div>
+						<motion.div
+							className="w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0 self-center relative group hidden sm:block"
+							initial={{ opacity: 0, y: 40 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.7, delay: 0.18 }}
+						>
 							<img
 								src="https://i.imgur.com/SZ360h1.png"
 								alt="Profile Picture"
 								className="w-full h-full rounded-full object-cover relative z-10 transition-transform duration-300 ease-in-out group-hover:scale-105 cursor-pointer"
 							/>
-						</div>
-					</section>
+						</motion.div>
+					</motion.section>
 
-					<section id="recent-writings" className="mb-20">
+					<motion.section id="recent-writings" className="mb-20" initial={{ opacity: 0, y: 40 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.7, delay: 0.21 }}>
 						<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
 							<h2 className="text-3xl font-semibold mb-3 sm:mb-0">
 								Recent Writings
@@ -106,9 +135,11 @@ export default function Component() {
 								/>
 							</a>
 						</div>
-					</section>
+					</motion.section>
 
-					<section id="projects" className="mb-20">
+					<motion.section id="projects" className="mb-20" initial={{ opacity: 0, y: 40 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.7, delay: 0.24 }}>
 						<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
 							<h2 className="text-3xl font-semibold mb-3 sm:mb-0">Projects</h2>
 							<a
@@ -132,9 +163,11 @@ export default function Component() {
 								/>
 							))}
 						</div>
-					</section>
+					</motion.section>
 
-					<section id="experience" className="mb-20">
+					<motion.section id="experience" className="mb-20" initial={{ opacity: 0, y: 40 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.7, delay: 0.27 }}>
 						<h2 className="text-3xl font-semibold mb-8">Experience</h2>
 						<div className="space-y-6 relative">
 							{/* Vertical Line */}
@@ -157,9 +190,11 @@ export default function Component() {
 							<ExperienceEntry title="Mobile Developer, Freelance" duration="2021-2022" description={"Built various mobile apps using Kotlin and Android SDK with video streaming, chat, calling, etc. features for small startups"}
 							/>
 						</div>
-					</section>
+					</motion.section>
 
-					<section id="contacts" className="mb-20">
+					<motion.section id="contacts" className="mb-20" initial={{ opacity: 0, y: 40 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.7, delay: 0.30 }}>
 						<h2 className="text-3xl font-semibold mb-8">Contacts</h2>
 						<p className="mb-8 text-left">
 							Feel free to drop me an email or a message on Telegram. Always
@@ -191,7 +226,7 @@ export default function Component() {
 								<Twitter size={28} />
 							</a>
 						</div>
-					</section>
+					</motion.section>
 				</main>
 			</div>
 		</div>
