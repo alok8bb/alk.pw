@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "motion/react"
 import { Github, Send, Linkedin, Mail, Twitter } from "lucide-react";
 import Navbar from "./components/Navbar";
@@ -8,8 +8,17 @@ import AnimatedText from "./components/AnimatedText";
 import Card from "./components/Card";
 import projectsData from "./data/projects.json";
 import { ExperienceEntry } from "./components/ExperienceEntry";
+import { fetchLatestPosts, Post } from "@/utils";
 
 export default function Component() {
+	const [posts, setPosts] = useState<Post[]>([]);
+
+	useEffect(() => {
+		fetchLatestPosts().then((data) => {
+			setPosts(data);
+		})
+	}, []);
+
 	return (
 		<div className="min-h-screen bg-black text-gray-200 relative overflow-hidden ">
 			<div className="fixed inset-0 overflow-hidden">
@@ -107,33 +116,20 @@ export default function Component() {
 								Explore all
 							</a>
 						</div>
-						<div className="grid sm:grid-cols-2 gap-8">
-							<a
-								href="https://blog.alk.pw/blog/actions-and-blinks-on-solana/"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="block h-full"
-							>
-								<Card
-									key={1}
-									title="Actions & Blinks on Solana"
-									date="13 Sep 2024"
-									description="A quick overview of Solana's Actions and Blinks and how they're changing the game."
-								/>
-							</a>
-							<a
-								href="https://blog.alk.pw/blog/lessons-from-hack/"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="block h-full"
-							>
-								<Card
-									key={2}
-									title="Lessons from a Hack: Securing Systems"
-									date="04 Jun 2024"
-									description="Why you should always double-check your SSH and firewall settings to avoid a security nightmare."
-								/>
-							</a>
+						<div className="flex gap-4 flex-col">
+							{posts.map((post, index) => (
+								<a key={index} href={post.link} target="_blank" rel="noopener noreferrer" className="flex justify-between">
+									<div className="flex flex-col justify-between">
+										<h3 className="font-semibold text-blue-400">{post.title}</h3>
+										<p className="text-base text-gray-300">{post.description}</p>
+									</div>
+									<p className="text-base text-gray-300">{post.pubDate.toLocaleDateString("en-in", {
+										year: "numeric",
+										month: "short",
+										day: "numeric",
+									})}</p>
+								</a>
+							))}
 						</div>
 					</motion.section>
 
