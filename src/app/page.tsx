@@ -57,7 +57,7 @@ export default function Component() {
 							transition={{ duration: 0.7, delay: 0.09 }}
 						>
 							<AnimatedText />
-							<motion.div
+							{/* <motion.div
 								className="glitch-wrapper mb-10"
 								initial={{ opacity: 0, y: 40 }}
 								animate={{ opacity: 1, y: 0 }}
@@ -69,28 +69,26 @@ export default function Component() {
 								>
 									<span>Welcome to my personal website!</span>
 								</p>
-							</motion.div>
+							</motion.div> */}
 							<motion.p
 								id="about"
-								className="mb-8 text-center sm:text-left leading-relaxed"
+								className="mb-8 text-center sm:text-left leading-relaxed text-gray-300 text-lg"
 								initial={{ opacity: 0, y: 40 }}
 								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.7, delay: 0.15 }}
+								transition={{ duration: 0.7, delay: 0.12 }}
 							>
-								I'm a 20-year-old CS Student based in India. My primary focus is
-								on <b>TypeScript, Rust, and Python</b> with past experience in
-								Android app development. <br />
-								Currently, I'm learning and building on <b>Solana & EVM</b>. I
-								have experience building, deploying, and managing websites,
-								bots, apps, and services. <br />
-								Looking forward to new opportunities and collaborations!
+								20 y.o full-stack blockchain developer from India who is also interested in finance. I mainly work with typescript & rust but have worked with many other languages in the past.
+								<br />
+								I'm enthusiastic about Solana & DeFI, and love to build <i>useful</i> software. 
+								<br /><br />
+								I love writing & reading occassionally; also 日本 and f1 are my interests. 
 							</motion.p>
 						</motion.div>
 						<motion.div
 							className="w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0 self-center relative group hidden sm:block"
 							initial={{ opacity: 0, y: 40 }}
 							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.7, delay: 0.18 }}
+							transition={{ duration: 0.7, delay: 0.15 }}
 						>
 							<img
 								src="https://i.imgur.com/SZ360h1.png"
@@ -102,7 +100,7 @@ export default function Component() {
 
 					<motion.section id="recent-writings" className="mb-20" initial={{ opacity: 0, y: 40 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.7, delay: 0.21 }}>
+						transition={{ duration: 0.7, delay: 0.18 }}>
 						<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
 							<h2 className="text-3xl font-semibold mb-3 sm:mb-0">
 								Recent Writings
@@ -135,7 +133,7 @@ export default function Component() {
 
 					<motion.section id="projects" className="mb-20" initial={{ opacity: 0, y: 40 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.7, delay: 0.24 }}>
+						transition={{ duration: 0.7, delay: 0.21 }}>
 						<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
 							<h2 className="text-3xl font-semibold mb-3 sm:mb-0">Projects</h2>
 							<a
@@ -163,7 +161,7 @@ export default function Component() {
 
 					<motion.section id="experience" className="mb-20" initial={{ opacity: 0, y: 40 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.7, delay: 0.27 }}>
+						transition={{ duration: 0.7, delay: 0.24 }}>
 						<h2 className="text-3xl font-semibold mb-8">Experience</h2>
 						<div className="space-y-6 relative">
 							{/* Vertical Line */}
@@ -190,9 +188,9 @@ export default function Component() {
 
 					<motion.section id="contacts" className="mb-20" initial={{ opacity: 0, y: 40 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.7, delay: 0.30 }}>
-						<h2 className="text-3xl font-semibold mb-8">Contacts</h2>
-						<p className="mb-8 text-left">
+						transition={{ duration: 0.7, delay: 0.27 }}>
+						<h2 className="text-3xl font-semibold mb-4">Contact</h2>
+						<p className="mb-8 text-lg text-gray-300 text-left">
 							Feel free to drop me an email or a message on Telegram. Always
 							open to interesting conversations and collaborations!
 						</p>
@@ -203,7 +201,7 @@ export default function Component() {
 								rel="noopener noreferrer"
 								className="text-gray-400 hover:text-white transition-colors"
 							>
-								<Github size={28} />
+								<Github size={25} />
 							</a>
 							<a
 								href="mailto:alok8bb@gmail.com"
@@ -211,7 +209,7 @@ export default function Component() {
 								rel="noopener noreferrer"
 								className="text-gray-400 hover:text-white transition-colors"
 							>
-								<Mail size={28} />
+								<Mail size={25} />
 							</a>
 							<a
 								href="https://twitter.com/alok8bb"
@@ -219,7 +217,7 @@ export default function Component() {
 								rel="noopener noreferrer"
 								className="text-gray-400 hover:text-white transition-colors"
 							>
-								<Twitter size={28} />
+								<Twitter size={25} />
 							</a>
 						</div>
 					</motion.section>
