@@ -22,7 +22,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" className="h-full">
             <head>
                 <meta name="title" content="Alok" />
                 <meta name="description" content="Programmer, Web & Web3" />
@@ -46,7 +46,7 @@ export default function RootLayout({
                 <meta name="twitter:site" content="@alok8bb" />
             </head>
             <body
-                className={`${inter.className} ${geistMono.variable} antialiased`}
+                className={`${inter.className} ${geistMono.variable} antialiased h-full`}
             >
                 {children}
             </body>
