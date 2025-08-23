@@ -28,11 +28,11 @@ export default function Component() {
                     </p>
                     <span className="font-semibold">open to work</span>
 
-                    <div className="flex gap-8">
-                        <p>email</p>
-                        <p>twitter(x)</p>
-                        <p>github</p>
-                        <p>telegram</p>
+                    <div className="flex gap-8 text-gray">
+                        <a className='hover:text-white hover:cursor-pointer transition-all duration-300' href="mailto:alok8bb@gmail.com" target="_blank">email</a>
+                        <a className='hover:text-white hover:cursor-pointer transition-all duration-300' href="https://x.com/alok8bb" target="_blank">twitter</a>
+                        <a className='hover:text-white hover:cursor-pointer transition-all duration-300' href="https://github.com/alok8bb" target="_blank">github</a>
+                        <a className='hover:text-white hover:cursor-pointer transition-all duration-300' href="https://t.me/broken_vortex" target="_blank">telegram</a>
                     </div>
                 </section>
 
@@ -88,7 +88,7 @@ export default function Component() {
 
                         <div className="flex">
                             <div className="w-1/2">
-                                <p className="text-white">humAIn</p>
+                                <p className="text-white">株式会社HumAIn</p>
                                 <span>software developer</span>
                             </div>
                             <div className="w-1/2 text-sm">
