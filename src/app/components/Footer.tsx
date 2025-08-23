@@ -17,7 +17,7 @@ const Footer = () => {
     }, []);
 
     return (
-        <footer>
+        <footer className='flex justify-between items-center'>
             <span className='text-gray text-sm'>{currentTime?.toLocaleString('en-IN', {
                 timeZone: 'Asia/Kolkata',
                 hour: 'numeric',
@@ -25,6 +25,9 @@ const Footer = () => {
                 second: '2-digit',
                 hour12: true,
             }).toUpperCase()}</span>
+
+            {/* Some form of game or activity here */}
+            <span className="text-md text-gray hover:scale-150 transition-all duration-200 hover:cursor-pointer">👾</span>
         </footer>
     );
 };
