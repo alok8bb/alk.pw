@@ -46,9 +46,11 @@ export default function RootLayout({
                 <meta name="twitter:site" content="@alok8bb" />
             </head>
             <body
-                className={`${inter.className} ${geistMono.variable} antialiased h-full`}
+                className={`${inter.className} ${geistMono.variable} h-full antialiased`}
             >
-                {children}
+                <div className="mx-auto flex min-h-screen max-w-3xl flex-col overflow-hidden bg-background px-4 py-8">
+                    {children}
+                </div>
             </body>
         </html>
     );

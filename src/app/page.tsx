@@ -14,7 +14,7 @@ export default function Component() {
     };
 
     return (
-        <div className="mx-auto flex min-h-screen max-w-3xl flex-col overflow-hidden bg-background px-4 py-8">
+        <>
             <Navbar />
             <main className="flex flex-1 flex-col gap-10">
                 <section className="flex flex-col gap-4">
@@ -22,17 +22,41 @@ export default function Component() {
                         Alok Pawar
                     </h1>
                     <p className="text-gray">
-                        {getAge()} y.o self-taught software engineer and computer
-                        science student interested in blockchain and future of
-                        finance/engineering.
+                        {getAge()} y.o self-taught software engineer and
+                        computer science student interested in blockchain and
+                        future of finance/engineering.
                     </p>
                     <span className="font-semibold">open to work</span>
 
                     <div className="flex gap-8 text-gray">
-                        <a className='hover:text-white hover:cursor-pointer transition-all duration-300' href="mailto:alok8bb@gmail.com" target="_blank">email</a>
-                        <a className='hover:text-white hover:cursor-pointer transition-all duration-300' href="https://x.com/alok8bb" target="_blank">twitter</a>
-                        <a className='hover:text-white hover:cursor-pointer transition-all duration-300' href="https://github.com/alok8bb" target="_blank">github</a>
-                        <a className='hover:text-white hover:cursor-pointer transition-all duration-300' href="https://t.me/broken_vortex" target="_blank">telegram</a>
+                        <a
+                            className="transition-all duration-300 hover:cursor-pointer hover:text-white"
+                            href="mailto:alok8bb@gmail.com"
+                            target="_blank"
+                        >
+                            email
+                        </a>
+                        <a
+                            className="transition-all duration-300 hover:cursor-pointer hover:text-white"
+                            href="https://x.com/alok8bb"
+                            target="_blank"
+                        >
+                            twitter
+                        </a>
+                        <a
+                            className="transition-all duration-300 hover:cursor-pointer hover:text-white"
+                            href="https://github.com/alok8bb"
+                            target="_blank"
+                        >
+                            github
+                        </a>
+                        <a
+                            className="transition-all duration-300 hover:cursor-pointer hover:text-white"
+                            href="https://t.me/broken_vortex"
+                            target="_blank"
+                        >
+                            telegram
+                        </a>
                     </div>
                 </section>
 
@@ -109,6 +133,6 @@ export default function Component() {
                 </section>
             </main>
             <Footer />
-        </div>
+        </>
     );
 }
