@@ -48,7 +48,7 @@ export default function RootLayout({
             <body
                 className={`${inter.className} ${geistMono.variable} h-full antialiased`}
             >
-                <div className="mx-auto flex min-h-screen max-w-3xl flex-col overflow-hidden bg-background px-4 py-8">
+                <div className="mx-auto flex min-h-screen max-w-3xl flex-col bg-background px-4 py-8">
                     {children}
                 </div>
             </body>

@@ -10,8 +10,8 @@ const config: Config = {
         extend: {
             colors: {
                 background: 'hsl(0 0% 3.92%)',
-                gray: "#A3A3A3",
-                white: "#FAFAFA"
+                gray: '#A3A3A3',
+                white: '#FAFAFA',
             },
         },
     },

@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@plugin "@tailwindcss/typography";
 
 :root {
     --background: #ffffff;
@@ -24,4 +25,18 @@ body {
     .text-balance {
         text-wrap: balance;
     }
+}
+
+/* Code block layout fixes for rehype-pretty-code */
+pre {
+    overflow-x: auto;
+    max-width: 100%;
+    padding: 20px 20px 20px 20px !important;
+}
+
+pre code {
+    white-space: pre;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    word-break: normal;
 }
