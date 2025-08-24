@@ -3,6 +3,7 @@ import { getPostById, getAllPosts } from '@/lib/api';
 import { ArrowLeftIcon } from 'lucide-react';
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
     const posts = await getAllPosts();
@@ -17,9 +18,14 @@ export async function generateMetadata({
 }: {
     params: { id: string };
 }) {
-    const { title } = await getPostById(id);
+    const post = await getPostById(id);
+    if (!post) {
+        return {
+            title: 'Post Not Found',
+        };
+    }
     return {
-        title,
+        title: post.title,
     };
 }
 
@@ -29,7 +35,9 @@ export default async function PostLayout({
     params: { id: string };
 }) {
     const post = await getPostById(id);
-    if (!post) throw new Error(`Post not found for slug: ${id}`);
+    if (!post) {
+        notFound();
+    }
 
     return (
         <>

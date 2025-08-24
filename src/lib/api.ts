@@ -12,6 +12,15 @@ import rehypePrettyCode from 'rehype-pretty-code'
 
 const postsDirectory = path.join(process.cwd(), 'content')
 
+export type Post = {
+  title: string;
+  id: string;
+  pubDate: string;
+  description: string;
+  category: string;
+  html: string;
+}
+
 function getPostFiles() {
   return fs.readdirSync(postsDirectory)
 }
@@ -42,22 +51,30 @@ function getParser() {
 
 const parser = getParser()
 
-export async function getPostById(id: string) {
+export async function getPostById(id: string): Promise<Post | null> {
   const realId = id.replace(/\.md$/, '')
   const fullPath = path.join(postsDirectory, `${realId}.md`)
-  const { data, content } = matter(await fs.promises.readFile(fullPath, 'utf8'))
+  
+  try {
+    const { data, content } = matter(await fs.promises.readFile(fullPath, 'utf8'))
 
-  const html = await parser.process(content)
-  const pubDate = new Date(data.pubDate)
+    const html = await parser.process(content)
+    const pubDate = new Date(data.pubDate)
 
-  return {
-    ...data,
-    title: data.title as string,
-    id: realId,
-    pubDate: `${pubDate.toISOString().slice(0, 10)}`,
-    description: data.description as string,
-    category: data.category as string,
-    html: html.value.toString(),
+    return {
+      ...data,
+      title: data.title as string,
+      id: realId,
+      pubDate: `${pubDate.toISOString().slice(0, 10)}`,
+      description: data.description as string,
+      category: data.category as string,
+      html: html.value.toString(),
+    }
+  } catch (error) {
+    if ((error as any)?.code === 'ENOENT') {
+      return null
+    }
+    throw error
   }
 }
 
@@ -73,7 +90,8 @@ export async function getPageMarkdown(string_: string) {
   }
 }
 
-export async function getAllPosts() {
+export async function getAllPosts(): Promise<Post[]> {
   const posts = await Promise.all(getPostFiles().map(id => getPostById(id)))
-  return posts.sort((post1, post2) => (post1.pubDate > post2.pubDate ? -1 : 1))
+  const validPosts = posts.filter((post): post is Post => post !== null)
+  return validPosts.sort((post1, post2) => (post1.pubDate > post2.pubDate ? -1 : 1))
 }
