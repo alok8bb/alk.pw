@@ -2,10 +2,9 @@
 
 import { compareDesc, format, parseISO } from 'date-fns';
 import Chip from '../components/Chip';
-import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import { allPosts, Post } from 'contentlayer/generated';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function BlogPage() {
     const posts = allPosts.sort((a, b) =>
@@ -13,6 +12,35 @@ export default function BlogPage() {
     );
     const categories = Array.from(new Set(posts.map((post) => post.category)));
     const [activeCategory, setActiveCategory] = useState('all');
+    const [searchQuery, setSearchQuery] = useState('');
+    const searchInputRef = useRef<HTMLInputElement>(null);
+
+    // Handle keyboard shortcuts
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            // Focus search on '/' key press
+            if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                if (document.activeElement?.tagName === 'INPUT' || 
+                    document.activeElement?.tagName === 'TEXTAREA') {
+                    return;
+                }
+                e.preventDefault();
+                searchInputRef.current?.focus();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
+    }, []);
+
+    // Filter posts based on search query and category
+    const filteredPosts = posts.filter((post: Post) => {
+        const matchesCategory = activeCategory === 'all' || post.category === activeCategory;
+        const matchesSearch = searchQuery === '' || 
+            post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            post.description.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+    });
 
     return (
         <>
@@ -49,6 +77,9 @@ export default function BlogPage() {
                     <div>
                         <div className="relative w-full sm:w-72">
                             <input
+                                ref={searchInputRef}
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder="Search"
                                 aria-label="Search posts"
                                 className="w-full rounded-md border border-gray bg-transparent px-3 py-2 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-black"
@@ -64,13 +95,7 @@ export default function BlogPage() {
 
                 {/* Blog List */}
                 <section className="flex flex-col gap-8">
-                    {posts
-                        .filter(
-                            (post: Post) =>
-                                activeCategory === 'all' ||
-                                post.category === activeCategory
-                        )
-                        .map((post: Post, idx: number) => (
+                    {filteredPosts.map((post: Post, idx: number) => (
                             <a
                                 key={idx}
                                 className="flex flex-col hover:cursor-pointer"
