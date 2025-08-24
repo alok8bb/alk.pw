@@ -9,9 +9,12 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "contentlayer": "^0.3.4",
+        "date-fns": "^4.1.0",
         "lucide-react": "^0.451.0",
         "motion": "^12.15.0",
         "next": "14.2.15",
+        "next-contentlayer": "^0.3.4",
         "react": "^18",
         "react-dom": "^18",
         "rss-parser": "^3.13.0"
