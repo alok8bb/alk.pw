@@ -24,8 +24,34 @@ export async function generateMetadata({
             title: 'Post Not Found',
         };
     }
+    
+    const ogImageUrl = `${process.env.NODE_ENV === 'production' ? 'https://alk.pw' : 'http://localhost:3000'}/api/og?slug=${id}`;
+    
     return {
         title: post.title,
+        description: post.description,
+        openGraph: {
+            title: post.title,
+            description: post.description,
+            images: [
+                {
+                    url: ogImageUrl,
+                    width: 1200,
+                    height: 630,
+                    alt: post.title,
+                },
+            ],
+            type: 'article',
+            publishedTime: post.pubDate,
+            siteName: 'alk.pw',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.description,
+            images: [ogImageUrl],
+            creator: '@alok8bb',
+        },
     };
 }
 
@@ -42,7 +68,7 @@ export default async function PostLayout({
     return (
         <>
             <Navbar />
-            <div className="flex items-center gap-2 text-gray transition-colors duration-300 hover:text-white">
+            <div className="flex items-center gap-2 text-gray transition-colors duration-300 hover:text-white mb-4 hover:cursor-pointer">
                 <ArrowLeftIcon className="h-4 w-4" />
                 <Link href="/blog">back</Link>
             </div>

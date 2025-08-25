@@ -14,6 +14,27 @@ const geistMono = localFont({
 export const metadata: Metadata = {
     title: 'Alok',
     description: 'Personal website of Alok',
+    openGraph: {
+        title: 'Alok',
+        images: [
+            {
+                url: '/og_image.svg',
+                width: 1200,
+                height: 630,
+                alt: 'Alok Pawar',
+            },
+        ],
+        url: 'https://alk.pw',
+        type: 'website',
+        siteName: 'alk.pw',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Alok',
+        images: ['/og_image.svg'],
+        site: '@alok8bb',
+        creator: '@alok8bb',
+    },
 };
 
 export default function RootLayout({
@@ -23,28 +44,6 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="h-full">
-            <head>
-                <meta name="title" content="Alok" />
-                <meta name="description" content="Programmer, Web & Web3" />
-                <meta name="author" content="Alok" />
-                <meta property="og:title" content="Alok" />
-                <meta
-                    property="og:description"
-                    content="Programmer, Web & Web3"
-                />
-                <meta property="og:image" content="https://alk.pw/og.svg" />
-                <meta property="og:url" content="https://alk.pw" />
-                <meta property="og:type" content="website" />
-                <meta property="og:site_name" content="alk.pw" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Alok" />
-                <meta
-                    name="twitter:description"
-                    content="Programmer, Web & Web3"
-                />
-                <meta name="twitter:image" content="https://alk.pw/og.svg" />
-                <meta name="twitter:site" content="@alok8bb" />
-            </head>
             <body
                 className={`${inter.className} ${geistMono.variable} h-full antialiased`}
             >

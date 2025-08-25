@@ -31,7 +31,8 @@ function getParser() {
     .use(remarkRehype)
     .use(remarkGfm)
     .use(rehypePrettyCode, {
-      theme: 'poimandres',
+      theme: 'houston',
+      keepBackground: true 
     })
     .use(rehypeStringify)
     .use(rehypeStringify)
