@@ -25,7 +25,7 @@ export async function generateMetadata({
         };
     }
     
-    const ogImageUrl = `${process.env.NODE_ENV === 'production' ? 'https://alk.pw' : 'http://localhost:3000'}/api/og?slug=${id}`;
+    const ogImageUrl = `/api/og?slug=${id}`;
     
     return {
         title: post.title,
