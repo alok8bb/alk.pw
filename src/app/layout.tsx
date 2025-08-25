@@ -32,8 +32,6 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: 'Alok',
         images: ['/og_image.png'],
-        site: '@alok8bb',
-        creator: '@alok8bb',
     },
 };
 
@@ -44,6 +42,18 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="h-full">
+            <head>
+                <script
+                    defer
+                    data-domain="alk.pw"
+                    src="https://analytics.alk.pw/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js"
+                ></script>
+                    <script
+                    dangerouslySetInnerHTML={{
+                        __html: `window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }`,
+                    }}
+                />
+            </head>
             <body
                 className={`${inter.className} ${geistMono.variable} h-full antialiased`}
             >
