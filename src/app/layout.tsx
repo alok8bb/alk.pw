@@ -18,7 +18,7 @@ export const metadata: Metadata = {
         title: 'Alok',
         images: [
             {
-                url: '/og_image.svg',
+                url: '/og_image.png',
                 width: 1200,
                 height: 630,
                 alt: 'Alok Pawar',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Alok',
-        images: ['/og_image.svg'],
+        images: ['/og_image.png'],
         site: '@alok8bb',
         creator: '@alok8bb',
     },
