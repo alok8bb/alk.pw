@@ -13,7 +13,7 @@ export const HomePage = () => {
                 `}
             >
                 <img
-                    src="https://i.imgur.com/Hfwrgof.jpg"
+                    src="https://i.imgur.com/SZ360h1.png"
                     className={css`
                         border-radius: 50%;
                         width: 150px;
