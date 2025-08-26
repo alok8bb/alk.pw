@@ -1,3 +1,6 @@
-# Personal Website - V3
+# Portfolio & Blog Website (v4)
 
-My personal website built with Next.js, Tailwind CSS.
+<img src="public/screenshot.png">
+
+--- 
+built using next.js & tailwindcss
