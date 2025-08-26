@@ -7,7 +7,7 @@ const Navbar = () => {
     const pathname = usePathname();
 
     return (
-        <header className="flex flex-col sm:flex-row justify-end items-center my-12">
+        <header className="flex flex-col justify-end my-12">
             <div className='flex gap-4 justify-end text-gray'>
                 <a 
                     className={`hover:text-white hover:cursor-pointer transition-all duration-300 ${pathname === '/' ? 'text-white' : ''}`} 

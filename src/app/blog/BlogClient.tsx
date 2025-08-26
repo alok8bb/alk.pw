@@ -83,7 +83,7 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                         ))}
                     </div>
                     <div>
-                        <div className="relative w-full sm:w-72">
+                        <div className="relative w-full sm:w-72 hidden sm:block">
                             <input
                                 ref={searchInputRef}
                                 value={searchQuery}

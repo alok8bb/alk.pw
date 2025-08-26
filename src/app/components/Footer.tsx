@@ -17,7 +17,7 @@ const Footer = () => {
     }, []);
 
     return (
-        <footer className='flex justify-between items-center'>
+        <footer className='flex justify-between items-center mt-4'>
             <span className='text-gray text-sm'>{currentTime?.toLocaleString('en-IN', {
                 timeZone: 'Asia/Kolkata',
                 hour: 'numeric',
