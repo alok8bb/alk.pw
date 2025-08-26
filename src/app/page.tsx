@@ -3,8 +3,21 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { projects } from './data/projects';
+import { experiences } from './data/experience';
 
 export default function Component() {
+    const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+    const [hoveredExperience, setHoveredExperience] = useState<string | null>(null);
+    const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+
+    const socialLinks = [
+        { name: 'email', href: 'mailto:alok8bb@gmail.com' },
+        { name: 'twitter', href: 'https://x.com/alok8bb' },
+        { name: 'github', href: 'https://github.com/alok8bb' },
+        { name: 'telegram', href: 'https://t.me/broken_vortex' },
+    ];
+
     const getAge = () => {
         const birthDate = new Date(2004, 10, 25);
         const today = new Date();
@@ -28,63 +41,52 @@ export default function Component() {
                     </p>
                     <span className="font-semibold">open to work</span>
 
-                    <div className="flex gap-8 text-gray">
-                        <a
-                            className="transition-all duration-300 hover:cursor-pointer hover:text-white"
-                            href="mailto:alok8bb@gmail.com"
-                            target="_blank"
-                        >
-                            email
-                        </a>
-                        <a
-                            className="transition-all duration-300 hover:cursor-pointer hover:text-white"
-                            href="https://x.com/alok8bb"
-                            target="_blank"
-                        >
-                            twitter
-                        </a>
-                        <a
-                            className="transition-all duration-300 hover:cursor-pointer hover:text-white"
-                            href="https://github.com/alok8bb"
-                            target="_blank"
-                        >
-                            github
-                        </a>
-                        <a
-                            className="transition-all duration-300 hover:cursor-pointer hover:text-white"
-                            href="https://t.me/broken_vortex"
-                            target="_blank"
-                        >
-                            telegram
-                        </a>
+                    <div 
+                        className="flex gap-8 text-gray"
+                        onMouseLeave={() => setHoveredLink(null)}
+                    >
+                        {socialLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                className={`transition-all duration-300 hover:cursor-pointer hover:text-white ${
+                                    hoveredLink && hoveredLink !== link.name 
+                                        ? 'opacity-30' 
+                                        : 'opacity-100'
+                                }`}
+                                href={link.href}
+                                target="_blank"
+                                onMouseEnter={() => setHoveredLink(link.name)}
+                            >
+                                {link.name}
+                            </a>
+                        ))}
                     </div>
                 </section>
 
                 <section className="text-md flex flex-col gap-3">
                     <h1 className="font-semibold">projects</h1>
-                    <div className="ml-8 flex flex-col gap-2 text-gray">
-                        <div>
-                            <p className="text-white">cloneit</p>
-                            <span>
-                                a cli tool to download specific github files and
-                                directories
-                            </span>
-                        </div>
-
-                        <div>
-                            <p className="text-white">payra</p>
-                            <span>
-                                solana program that enables small groups to
-                                split expenses and manage shared funds
-                            </span>
-                        </div>
-
-                        <div>
-                            <p className="text-white">blockback</p>
-                            <span>
-                                crowdfunding dapp with solidity and reactjs
-                            </span>
-                        </div>
+                    <div 
+                        className="ml-8 flex flex-col gap-2 text-gray"
+                        onMouseLeave={() => setHoveredProject(null)}
+                    >
+                        {projects.map((project) => (
+                            <a 
+                                key={project.title}
+                                href={project.source} 
+                                target="_blank"
+                                className={`transition-opacity duration-300 ${
+                                    hoveredProject && hoveredProject !== project.title 
+                                        ? 'opacity-30' 
+                                        : 'opacity-100'
+                                }`}
+                                onMouseEnter={() => setHoveredProject(project.title)}
+                            >
+                                <p className="text-white">
+                                    {project.title.toLowerCase()}
+                                </p>
+                                <span>{project.description.toLowerCase()}</span>
+                            </a>
+                        ))}
                     </div>
                 </section>
 
@@ -99,36 +101,39 @@ export default function Component() {
 
                 <section className="flex flex-col gap-3">
                     <h1 className="text-md font-semibold">experience</h1>
-                    <div className="ml-8 flex flex-col gap-2 text-gray">
-                        <div className="flex">
-                            <div className="w-1/2">
-                                <p className="text-white">paystream finance</p>
-                                <span>full-stack developer</span>
+                    <div 
+                        className="ml-8 flex flex-col gap-2 text-gray"
+                        onMouseLeave={() => setHoveredExperience(null)}
+                    >
+                        {experiences.map((experience) => (
+                            <div 
+                                key={experience.company}
+                                className={`flex transition-opacity duration-300 ${
+                                    hoveredExperience && hoveredExperience !== experience.company 
+                                        ? 'opacity-30' 
+                                        : 'opacity-100'
+                                }`}
+                                onMouseEnter={() => setHoveredExperience(experience.company)}
+                            >
+                                <div className="w-1/2 flex flex-col">
+                                    {experience.link ? (
+                                        <a
+                                            className="text-white hover:cursor-pointer"
+                                            href={experience.link}
+                                            target="_blank"
+                                        >
+                                            {experience.company}
+                                        </a>
+                                    ) : (
+                                        <p className="text-white">{experience.company}</p>
+                                    )}
+                                    <span>{experience.position}</span>
+                                </div>
+                                <div className="w-1/2 text-sm">
+                                    <span>{experience.period}</span>
+                                </div>
                             </div>
-                            <div className="w-1/2 text-sm">
-                                <span>Mar 2024 - Aug 2025</span>
-                            </div>
-                        </div>
-
-                        <div className="flex">
-                            <div className="w-1/2">
-                                <p className="text-white">株式会社HumAIn</p>
-                                <span>software developer</span>
-                            </div>
-                            <div className="w-1/2 text-sm">
-                                <span>Oct 2024 - Feb 2025</span>
-                            </div>
-                        </div>
-
-                        <div className="flex">
-                            <div className="w-1/2">
-                                <p className="text-white">freelance engineer</p>
-                                <span>full-stack, blockchain, bots</span>
-                            </div>
-                            <div className="w-1/2 text-sm">
-                                <span>2022 - 2024</span>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </section>
             </main>
