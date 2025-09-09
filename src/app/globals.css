@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    --color-background: hsl(0 0% 3.92%);
+    --color-gray: #A3A3A3;
+    --color-white: #FAFAFA;
+}
 
 :root {
     --background: #ffffff;

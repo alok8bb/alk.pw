@@ -21,6 +21,7 @@ interface BlogClientProps {
 export default function BlogClient({ posts, categories }: BlogClientProps) {
     const [activeCategory, setActiveCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
+    const [hoveredPost, setHoveredPost] = useState<string | null>(null);
     const searchInputRef = useRef<HTMLInputElement>(null);
 
     // Handle keyboard shortcuts
@@ -102,12 +103,17 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                 </div>
 
                 {/* Blog List */}
-                <section className="flex flex-col gap-8">
+                <section className="flex flex-col gap-8" onMouseLeave={() => setHoveredPost(null)}>
                     {filteredPosts.map((post, idx: number) => (
                             <a
                                 key={idx}
-                                className="flex flex-col hover:cursor-pointer"
                                 href={`/blog/${post.id}`}
+                                className={`flex flex-col hover:cursor-pointer transition-opacity duration-300 ${
+                                    hoveredPost && hoveredPost !== post.title 
+                                        ? 'opacity-30' 
+                                        : 'opacity-100'
+                                }`}
+                                onMouseEnter={() => setHoveredPost(post.title)}
                             >
                                 <h2 className="text-xl font-semibold text-white">
                                     {post.title}
