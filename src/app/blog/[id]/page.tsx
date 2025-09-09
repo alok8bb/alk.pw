@@ -14,19 +14,20 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({
-    params: { id },
+    params,
 }: {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }) {
+    const { id } = await params;
     const post = await getPostById(id);
     if (!post) {
         return {
             title: 'Post Not Found',
         };
     }
-    
+
     const ogImageUrl = `/api/og?slug=${id}`;
-    
+
     return {
         title: post.title,
         description: post.description,
@@ -56,10 +57,11 @@ export async function generateMetadata({
 }
 
 export default async function PostLayout({
-    params: { id },
+    params,
 }: {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }) {
+    const { id } = await params;
     const post = await getPostById(id);
     if (!post) {
         notFound();
