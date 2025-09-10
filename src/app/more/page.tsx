@@ -8,8 +8,8 @@ export default function More() {
             <main className="flex-1">
                 <div className="flex flex-col gap-2 text-white">
                     <img
-                        src="/hkg-night-sky.jpg"
-                        alt="hkg-night-sky"
+                        src="/hkg_night_sky.jpeg"
+                        alt="Picture of Hong Kong building at night"
                         className="h-80 w-full object-cover"
                     />
                     <p>
