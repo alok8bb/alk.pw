@@ -85,7 +85,7 @@ export default async function PostLayout({
                     </time>
                 </div>
                 <div
-                    className="prose text-white [&>*:last-child]:mb-0 [&>*]:mb-3"
+                    className="prose text-white [&>*:last-child]:mb-0 [&>*]:mb-3 rehype-content"
                     dangerouslySetInnerHTML={{ __html: post.html }}
                 />
             </article>
