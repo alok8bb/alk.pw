@@ -18,6 +18,14 @@ export const projects: Project[] = [
         image: 'https://get.alk.pw/screenshots/cloneit.png',
     },
     {
+        title: 'BlockBack',
+        description: 'A crowdfunding dapp with solidity and reactjs',
+        tags: ['solidity', 'nextjs'],
+        live: 'https://blockback.alk.pw',
+        source: 'https://github.com/alok8bb/blockback',
+        image: 'https://github.com/alok8bb/BlockBack/raw/main/media/home-out.png',
+    },
+    {
         title: 'payra',
         description:
             'solana program that enables small groups to split expenses and manage shared funds',
@@ -27,19 +35,18 @@ export const projects: Project[] = [
         image: 'https://github.com/alok8bb/payra/raw/main/screenshots/preview.png',
     },
     {
-        title: 'BlockBack',
-        description: 'A crowdfunding dapp with solidity and reactjs',
-        tags: ['solidity', 'nextjs'],
-        live: 'https://blockback.alk.pw',
-        source: 'https://github.com/alok8bb/blockback',
-        image: 'https://github.com/alok8bb/BlockBack/raw/main/media/home-out.png',
+        title: 'Paladin',
+        description: "paladin is a group management bot with various features specially designed for crypto/token groups",
+        source: "https://github.com/alok8bb/paladin",
+        live: "https://t.me/paladin_beta_bot",
+        tags: ["typescript", "telegram", "bot"],
     },
     {
-        title: 'Solaris Board',
-        description: 'web dashboard for essential things - solana blockchain',
+        title: 'Sova Screener',
+        description: '[wip] web dashboard for essential things',
         tags: ['@solana/web3.js', 'nextjs'],
-        live: 'https://solaris-board.alk.pw',
+        live: 'https://sovascreener.com',
         source: 'https://github.com/alok8bb/solaris-board',
         image: 'https://github.com/alok8bb/solaris-board/raw/main/screenshots/dashboard.png',
-    },
+    }
 ];
