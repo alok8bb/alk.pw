@@ -8,6 +8,8 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 import rehypePrettyCode from 'rehype-pretty-code'
+import { rehypeResolveAndRewriteImgs, rehypeMarkZoomable } from './rehype'
+
 
 const postsDirectory = path.join(process.cwd(), 'content')
 
@@ -27,26 +29,16 @@ function getPostFiles() {
 function getParser() {
   return unified()
     .use(remarkParse)
-    .use(remarkRehype)
-    .use(remarkGfm)
+    .use(remarkGfm)                
+    .use(remarkRehype)              
+    .use(rehypeSlug)               
     .use(rehypePrettyCode, {
       theme: 'houston',
-      keepBackground: true 
+      keepBackground: true,
     })
-    .use(rehypeStringify)
-    .use(rehypeStringify)
-    .use(rehypeSlug)
-    // .use(rehypeAutolinkHeadings, {
-    //   content: arg => ({
-    //     type: 'element',
-    //     tagName: 'a',
-    //     properties: {
-    //       href: `#${String(arg.properties?.id)}`,
-    //       style: 'margin-right: 10px',
-    //     },
-    //     children: [{ type: 'text', value: '#' }],
-    //   }),
-    // })
+    .use(rehypeResolveAndRewriteImgs, { assetsDir: path.join(process.cwd(), 'content', 'assets') })
+    .use(rehypeMarkZoomable)
+    .use(rehypeStringify);
 }
 
 const parser = getParser()

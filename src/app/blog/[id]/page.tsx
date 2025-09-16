@@ -4,6 +4,7 @@ import { ArrowLeftIcon } from 'lucide-react';
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
 import { notFound } from 'next/navigation';
+import ZoomImages from '@/app/components/ZoomImages';
 
 export async function generateStaticParams() {
     const posts = await getAllPosts();
@@ -88,6 +89,7 @@ export default async function PostLayout({
                     className="prose text-white [&>*:last-child]:mb-0 [&>*]:mb-3 rehype-content"
                     dangerouslySetInnerHTML={{ __html: post.html }}
                 />
+                <ZoomImages />
             </article>
         </>
     );
