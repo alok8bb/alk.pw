@@ -51,11 +51,11 @@ The leader inserts these transactions into the **PoH (Proof of History) sequence
 Other validators verify the block's validity (signatures, balances, program execution etc). If valid, they cast a vote transaction referencing the block's hash. Validator votes are just transactions sent into the network and included in subsequent blocks.
 
 #### Commitment Levels
-- **Processed** → The block containing the transaction has been received and executed locally by a validator.
+**Processed** → The block containing the transaction has been received and executed locally by a validator.
 
-- **Confirmed** → The block has been voted on by a supermajority of validators (>66% of stake).
+**Confirmed** → The block has been voted on by a supermajority of validators (>66% of stake).
 
-- **Finalized** → The block is “rooted” (made irreversible) under **[Tower BFT](https://www.helius.dev/blog/consensus-on-solana)**, meaning the network will not roll it back.
+**Finalized** → The block is “rooted” (made irreversible) under **[Tower BFT](https://www.helius.dev/blog/consensus-on-solana)**, meaning the network will not roll it back.
 
 ## Rewards and Cost
 Validators mainly have three types of rewards. They can choose to pass these rewards back to stakers while keeping a portion to cover costs and profit. Validators set a **commission fee** (usually 0–10%), and the rest is distributed to delegators.
