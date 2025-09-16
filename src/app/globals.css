@@ -57,7 +57,7 @@ pre code {
       @apply text-xl font-semibold leading-snug mt-5 mb-2 text-white;
     }
     .rehype-content h4 {
-      @apply text-lg font-medium mt-4 mb-2 text-white;
+      @apply text-lg font-semibold mt-4 mb-2 text-white;
     }
   
     /* Paragraphs */
