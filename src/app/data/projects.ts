@@ -2,6 +2,8 @@ export type Project = {
     title: string;
     description: string;
     tags: string[];
+    category: string;
+    year: string;
     live?: string;
     source: string;
     image?: string;
@@ -9,44 +11,51 @@ export type Project = {
 
 export const projects: Project[] = [
     {
-        title: 'cloneit',
-        description:
-            ' a cli tool to download specific github files and directories',
-        tags: ['rust', 'cli'],
-        live: 'https://github.com/alok8bb/cloneit',
-        source: 'https://github.com/alok8bb/cloneit',
-        image: 'https://get.alk.pw/screenshots/cloneit.png',
+        title: 'Sova Screener',
+        description: 'Web dashboard for essential things',
+        tags: ['@solana/web3.js', 'nextjs'],
+        category: 'Web3',
+        year: '2024',
+        live: 'https://sovascreener.com',
+        source: 'https://github.com/alok8bb/solaris-board',
     },
     {
-        title: 'BlockBack',
-        description: 'A crowdfunding dapp with solidity and reactjs',
-        tags: ['solidity', 'nextjs'],
-        live: 'https://blockback.alk.pw',
-        source: 'https://github.com/alok8bb/blockback',
-        image: 'https://github.com/alok8bb/BlockBack/raw/main/media/home-out.png',
-    },
-    {
-        title: 'payra',
+        title: 'Payra',
         description:
-            'solana program that enables small groups to split expenses and manage shared funds',
+            'Solana program for splitting expenses and managing shared funds',
         tags: ['solana', 'rust'],
+        category: 'Solana',
+        year: '2024',
         live: 'https://solscan.io/account/pAYrAkZHxebd89ojqt8pu9fBF8HWfiAcdqs8QFzk6dt?cluster=devnet',
         source: 'https://github.com/alok8bb/payra',
-        image: 'https://github.com/alok8bb/payra/raw/main/screenshots/preview.png',
     },
     {
         title: 'Paladin',
-        description: "paladin is a group management bot with various features specially designed for crypto/token groups",
-        source: "https://github.com/alok8bb/paladin",
-        live: "https://t.me/paladin_beta_bot",
-        tags: ["typescript", "telegram", "bot"],
+        description:
+            'Group management bot for crypto/token communities',
+        tags: ['typescript', 'telegram', 'bot'],
+        category: 'Bot',
+        year: '2023',
+        source: 'https://github.com/alok8bb/paladin',
+        live: 'https://t.me/paladin_beta_bot',
     },
     {
-        title: 'Sova Screener',
-        description: '[wip] web dashboard for essential things',
-        tags: ['@solana/web3.js', 'nextjs'],
-        live: 'https://sovascreener.com',
-        source: 'https://github.com/alok8bb/solaris-board',
-        image: 'https://github.com/alok8bb/solaris-board/raw/main/screenshots/dashboard.png',
-    }
+        title: 'Cloneit',
+        description:
+            'CLI tool to download specific GitHub files and directories',
+        tags: ['rust', 'cli'],
+        category: 'CLI',
+        year: '2022',
+        live: 'https://github.com/alok8bb/cloneit',
+        source: 'https://github.com/alok8bb/cloneit',
+    },
+    {
+        title: 'BlockBack',
+        description: 'A crowdfunding dapp with Solidity and React',
+        tags: ['solidity', 'nextjs'],
+        category: 'Web3',
+        year: '2022',
+        live: 'https://blockback.alk.pw',
+        source: 'https://github.com/alok8bb/blockback',
+    },
 ];

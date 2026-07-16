@@ -13,19 +13,19 @@ const Navbar = () => {
                     className={`hover:text-white hover:cursor-pointer transition-all duration-300 ${pathname === '/' ? 'text-white' : ''}`} 
                     href="/"
                 >
-                    home
+                    Home
                 </a>
-                <a 
-                    className={`hover:text-white hover:cursor-pointer transition-all duration-300 ${pathname === '/blog' ? 'text-white' : ''}`} 
+                <a
+                    className={`hover:text-white hover:cursor-pointer transition-all duration-300 ${pathname === '/blog' ? 'text-white' : ''}`}
                     href="/blog"
                 >
-                    blog
+                    Blog
                 </a>
-                <a 
-                    className={`hover:text-white hover:cursor-pointer transition-all duration-300 ${pathname === '/more' ? 'text-white' : ''}`} 
+                <a
+                    className={`hover:text-white hover:cursor-pointer transition-all duration-300 ${pathname === '/more' ? 'text-white' : ''}`}
                     href="/more"
                 >
-                    more
+                    More
                 </a>
             </div>
         </header>

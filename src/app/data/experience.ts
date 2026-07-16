@@ -1,25 +1,33 @@
 export type Experience = {
-    company: string;
+    year: string;
     position: string;
-    period: string;
+    company: string;
+    startDate: string;
+    endDate: string;
     link?: string;
 };
 
 export const experiences: Experience[] = [
     {
-        company: 'paystream finance',
-        position: 'full-stack developer',
-        period: 'Mar 2024 - Aug 2025',
+        year: '2024',
+        position: 'Full-Stack Developer',
+        company: 'Paystream Finance',
+        startDate: '03/24',
+        endDate: '08/25',
         link: 'https://paystream.finance',
     },
     {
+        year: '2024',
+        position: 'Software Developer',
         company: '株式会社HumAIn',
-        position: 'software developer',
-        period: 'Oct 2024 - Feb 2025',
+        startDate: '10/24',
+        endDate: '02/25',
     },
     {
-        company: 'freelance engineer',
-        position: 'full-stack, blockchain, bots',
-        period: '2022 - 2024',
+        year: '2022',
+        position: 'Freelance Engineer',
+        company: 'Full-stack, Blockchain, Bots',
+        startDate: '2022',
+        endDate: '2024',
     },
 ];

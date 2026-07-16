@@ -36,3 +36,9 @@ yarn-error.log*
 next-env.d.ts
 
 .contentlayer
+
+.claude/
+CLAUDE.md
+
+# generated assets (prebuild copies content/assets → public/assets)
+public/assets/

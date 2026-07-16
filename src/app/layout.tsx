@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { Inter } from 'next/font/google';
+import DevTools from './components/DevTools';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -12,6 +13,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+    metadataBase: new URL('https://alk.pw'),
     title: 'Alok',
     description: 'Personal website of Alok',
     openGraph: {
@@ -57,9 +59,10 @@ export default function RootLayout({
             <body
                 className={`${inter.className} ${geistMono.variable} h-full antialiased`}
             >
-                <div className="mx-auto flex min-h-screen max-w-3xl flex-col bg-background px-4 py-8">
+                <div className="mx-auto flex min-h-screen max-w-2xl flex-col px-6 py-20">
                     {children}
                 </div>
+                <DevTools />
             </body>
         </html>
     );
