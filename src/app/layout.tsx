@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { Inter } from 'next/font/google';
-import DevTools from './components/DevTools';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -62,7 +61,6 @@ export default function RootLayout({
                 <div className="mx-auto flex min-h-screen max-w-2xl flex-col px-6 py-20">
                     {children}
                 </div>
-                <DevTools />
             </body>
         </html>
     );
