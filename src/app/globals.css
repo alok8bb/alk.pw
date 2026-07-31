@@ -179,6 +179,11 @@ body {
     transform: rotate(2deg);
 }
 
+.hero-name {
+    font-family: var(--font-instrument-serif), Georgia, serif;
+    font-weight: 400;
+}
+
 .company-link {
     transition:
         color 150ms ease-out,

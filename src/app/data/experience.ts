@@ -12,7 +12,7 @@ export const experiences: Experience[] = [
         position: 'Product Developer',
         company: 'Paystream Finance',
         description:
-            'Worked across the frontend, backend, and blockchain integrations of a financial product.',
+            'Worked across most of the product as it moved from lending and borrowing into LP and delta-neutral trading tools, covering product UI, backend systems and deployments.',
         startDate: '2024-03',
         endDate: '2025-08',
         link: 'https://paystream.finance',
@@ -21,7 +21,7 @@ export const experiences: Experience[] = [
         position: 'Developer',
         company: '株式会社HumAIn',
         description:
-            'Worked on the frontend and backend, and designed specialized UI components for a web application.',
+            'Worked mainly on the frontend for a private healthcare product, building product screens and components while touching the backend where needed.',
         startDate: '2024-10',
         endDate: '2025-02',
     },

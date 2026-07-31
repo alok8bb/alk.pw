@@ -82,7 +82,7 @@ export default async function Home() {
 
             <main>
                 <section className="mb-20">
-                    <h1 className="text-foreground text-4xl leading-tight font-bold">
+                    <h1 className="hero-name text-foreground text-[3rem] leading-none">
                         Alok Pawar
                     </h1>
                     <p className="text-muted mt-2 text-sm leading-6">
@@ -94,14 +94,14 @@ export default async function Home() {
 
                     <div className="text-muted mt-6 max-w-[35rem] space-y-4 text-sm leading-7">
                         <p>
-                            I'm a developer with over 4 years of experience
-                            building software for web, android and blockchain. I
-                            have worked with Go, Rust, Python, TypeScript and
-                            various languages and frameworks.
+                            I'm a developer with over four years of experience
+                            building software for the web, Android and{' '}
+                            blockchains. I've worked with Go, Rust, Python,
+                            TypeScript and various languages and frameworks.
                         </p>
                         <p>
-                            I have also spent a lot of time tinkering with linux
-                            back in the day. Currently finance, blockchains and
+                            I also spent a lot of time tinkering with Linux back
+                            in the day. These days finance, blockchains and
                             consumer applications excite me the most.
                         </p>
                         <p>
@@ -255,7 +255,7 @@ export default async function Home() {
                             </a>
                         }
                     >
-                        Selected work
+                        Projects
                     </SectionHeader>
 
                     <div className="mt-1 space-y-4">

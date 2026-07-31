@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Instrument_Serif, Inter } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 
@@ -8,6 +8,15 @@ const inter = Inter({
     variable: '--font-inter',
     display: 'swap',
 });
+
+const instrumentSerif = Instrument_Serif({
+    subsets: ['latin'],
+    weight: '400',
+    variable: '--font-instrument-serif',
+    display: 'swap',
+});
+
+const fontVariables = [inter.variable, instrumentSerif.variable].join(' ');
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://alk.pw'),
@@ -62,7 +71,7 @@ export default function RootLayout({
                     }`}
                 </Script>
             </head>
-            <body className={`${inter.variable} h-full antialiased`}>
+            <body className={`${fontVariables} h-full antialiased`}>
                 <div className="mx-auto flex min-h-screen max-w-[50rem] flex-col px-6 py-12 sm:py-16">
                     {children}
                 </div>
