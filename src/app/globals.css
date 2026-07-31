@@ -12,6 +12,20 @@
     --accent: var(--foreground);
     --accent-foreground: var(--background);
     --outline: oklch(0.82 0 0);
+    --paystream-hover-from: #000d1e;
+    --paystream-hover-via: #6c2b2c;
+    --paystream-hover-to: #000d1e;
+    --paystream-hover-shine: #267dce;
+    --paystream-hover-decoration: #6c2b2c;
+    --humain-hover-from: #16316a;
+    --humain-hover-to: #267dce;
+    --humain-hover-shine: #5774f0;
+    --independent-hover-from: #3f6f50;
+    --independent-hover-via: #6d9b7d;
+    --independent-hover-to: #3f6f50;
+    --independent-hover-shine: #7ea88d;
+    --independent-hover-decoration: #6d9b7d;
+    --independent-hover-mark: #4f7f63;
 }
 
 :root[data-theme='dark'] {
@@ -26,6 +40,20 @@
     --accent: var(--foreground);
     --accent-foreground: var(--background);
     --outline: oklch(0.28 0 0);
+    --paystream-hover-from: #9ce0ff;
+    --paystream-hover-via: #ffffff;
+    --paystream-hover-to: #9ce0ff;
+    --paystream-hover-shine: #ffffff;
+    --paystream-hover-decoration: #9ce0ff;
+    --humain-hover-from: #8fa0e8;
+    --humain-hover-to: #6da2d4;
+    --humain-hover-shine: #d8e3ff;
+    --independent-hover-from: #a0d6b4;
+    --independent-hover-via: #d7f5df;
+    --independent-hover-to: #a0d6b4;
+    --independent-hover-shine: #ffffff;
+    --independent-hover-decoration: #a0d6b4;
+    --independent-hover-mark: #a0d6b4;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,6 +69,20 @@
         --accent: var(--foreground);
         --accent-foreground: var(--background);
         --outline: oklch(0.28 0 0);
+        --paystream-hover-from: #9ce0ff;
+        --paystream-hover-via: #ffffff;
+        --paystream-hover-to: #9ce0ff;
+        --paystream-hover-shine: #ffffff;
+        --paystream-hover-decoration: #9ce0ff;
+        --humain-hover-from: #8fa0e8;
+        --humain-hover-to: #6da2d4;
+        --humain-hover-shine: #d8e3ff;
+        --independent-hover-from: #a0d6b4;
+        --independent-hover-via: #d7f5df;
+        --independent-hover-to: #a0d6b4;
+        --independent-hover-shine: #ffffff;
+        --independent-hover-decoration: #a0d6b4;
+        --independent-hover-mark: #a0d6b4;
     }
 }
 
@@ -137,6 +179,106 @@ body {
     transform: rotate(2deg);
 }
 
+.company-link {
+    transition:
+        color 150ms ease-out,
+        text-decoration-color 150ms ease-out;
+}
+
+.company-shine {
+    display: inline-block;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    transition: color 150ms ease-out;
+    -webkit-text-fill-color: currentColor;
+}
+
+.company-paystream:hover,
+.company-paystream:focus-visible {
+    text-decoration-color: var(--paystream-hover-decoration);
+}
+
+.company-paystream:hover .company-shine-paystream,
+.company-paystream:focus-visible .company-shine-paystream,
+.experience-paystream:hover .company-shine-paystream,
+.experience-paystream:focus-within .company-shine-paystream,
+.company-shine-paystream:hover {
+    color: transparent;
+    background-image:
+        radial-gradient(
+            circle at var(--company-shine-x) 50%,
+            var(--paystream-hover-shine) 0 9%,
+            transparent 28%
+        ),
+        linear-gradient(
+            90deg,
+            var(--paystream-hover-from),
+            var(--paystream-hover-via),
+            var(--paystream-hover-to)
+        );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.company-logo {
+    background: #000d1e;
+}
+
+.experience-humain:hover .company-shine-humain,
+.experience-humain:focus-within .company-shine-humain,
+.company-shine-humain:hover {
+    color: transparent;
+    background-image:
+        radial-gradient(
+            circle at var(--company-shine-x) 50%,
+            var(--humain-hover-shine) 0 9%,
+            transparent 30%
+        ),
+        linear-gradient(90deg, var(--humain-hover-from), var(--humain-hover-to));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.company-independent {
+    transition:
+        color 150ms ease-out,
+        text-decoration-color 150ms ease-out;
+}
+
+.company-independent:hover,
+.company-independent:focus-visible,
+.experience-independent:hover .company-independent,
+.experience-independent:focus-within .company-independent {
+    text-decoration-color: var(--independent-hover-decoration);
+}
+
+.experience-independent:hover .company-shine-independent,
+.experience-independent:focus-within .company-shine-independent,
+.company-shine-independent:hover {
+    color: transparent;
+    background-image:
+        radial-gradient(
+            circle at var(--company-shine-x) 50%,
+            var(--independent-hover-shine) 0 9%,
+            transparent 30%
+        ),
+        linear-gradient(
+            90deg,
+            var(--independent-hover-from),
+            var(--independent-hover-via),
+            var(--independent-hover-to)
+        );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.company-independent-mark {
+    color: var(--independent-hover-mark);
+}
+
 ::selection {
     color: var(--accent-foreground);
     background: var(--accent);
@@ -148,6 +290,12 @@ body {
     }
 
     .theme-toggle {
+        transition: none;
+    }
+
+    .company-link,
+    .company-shine,
+    .company-independent {
         transition: none;
     }
 }

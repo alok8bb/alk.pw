@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/api';
+import CompanyShine from './components/CompanyShine';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import { experiences } from './data/experience';
@@ -38,6 +39,14 @@ function formatShortMonthYear(value: string) {
 
 function formatPostDate(value: string) {
     return monthYearFormatter.format(new Date(`${value}T00:00:00Z`));
+}
+
+function getExperienceHoverClass(company: string) {
+    if (company === 'Paystream Finance') return 'experience-paystream';
+    if (company === '株式会社HumAIn') return 'experience-humain';
+    if (company === 'Independent') return 'experience-independent';
+
+    return '';
 }
 
 function SectionHeader({
@@ -163,7 +172,9 @@ export default async function Home() {
                         {experiences.map((experience) => (
                             <article
                                 key={`${experience.company}-${experience.position}`}
-                                className="flex gap-4 py-2 sm:gap-6"
+                                className={`flex gap-4 py-2 sm:gap-6 ${getExperienceHoverClass(
+                                    experience.company
+                                )}`}
                             >
                                 <div className="min-w-0 flex-1">
                                     <h3 className="text-foreground text-[0.95rem] leading-6 font-semibold">
@@ -175,11 +186,11 @@ export default async function Home() {
                                                     href={experience.link}
                                                     target="_blank"
                                                     rel="noreferrer"
-                                                    className="decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent ml-1 inline-flex items-center gap-1.5 align-middle underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                                                    className="company-link company-paystream group/paystream decoration-outline focus-visible:outline-accent ml-1 inline-flex items-center gap-1.5 align-middle underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
                                                 >
                                                     {experience.company ===
                                                     'Paystream Finance' ? (
-                                                        <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center overflow-hidden rounded-[5px] align-middle">
+                                                        <span className="company-logo inline-flex h-4 w-4 shrink-0 items-center justify-center overflow-hidden rounded-[5px] align-middle">
                                                             <img
                                                                 src="/logo/paystream.jpg"
                                                                 alt=""
@@ -189,10 +200,28 @@ export default async function Home() {
                                                             />
                                                         </span>
                                                     ) : null}
-                                                    <span>
-                                                        {experience.company}
-                                                    </span>
+                                                    <CompanyShine variant="paystream">
+                                                        Paystream Finance
+                                                    </CompanyShine>
                                                 </a>
+                                            ) : experience.company ===
+                                              '株式会社HumAIn' ? (
+                                                <CompanyShine variant="humain">
+                                                    {experience.company}
+                                                </CompanyShine>
+                                            ) : experience.company ===
+                                              'Independent' ? (
+                                                <span className="company-independent inline-flex items-center gap-1">
+                                                    <CompanyShine variant="independent">
+                                                        {experience.company}
+                                                    </CompanyShine>
+                                                    <span
+                                                        aria-hidden="true"
+                                                        className="company-independent-mark"
+                                                    >
+                                                        🌱
+                                                    </span>
+                                                </span>
                                             ) : (
                                                 experience.company
                                             )}
@@ -205,11 +234,8 @@ export default async function Home() {
                                 <p
                                     className={`${metaColumnClasses} whitespace-nowrap`}
                                 >
-                                    {formatShortMonthYear(
-                                        experience.startDate
-                                    )}{' '}
-                                    -{' '}
-                                    {formatShortMonthYear(experience.endDate)}
+                                    {formatShortMonthYear(experience.startDate)}{' '}
+                                    - {formatShortMonthYear(experience.endDate)}
                                 </p>
                             </article>
                         ))}
