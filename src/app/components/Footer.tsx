@@ -6,7 +6,7 @@ const footerLinkClasses =
 
 export default function Footer() {
     return (
-        <footer className="border-outline border-t py-5">
+        <footer className="py-5">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                 <LocalTime />
                 <div className="flex items-center gap-2">

@@ -48,8 +48,8 @@ function SectionHeader({
     action?: ReactNode;
 }) {
     return (
-        <header className="border-outline mb-1 flex min-h-11 items-center border-b">
-            <h2 className="text-accent flex-1 text-xs font-medium tracking-[0.14em] uppercase">
+        <header className="mb-2 flex min-h-11 items-center">
+            <h2 className="text-foreground flex-1 text-xs font-semibold tracking-[0.18em] uppercase">
                 {children}
             </h2>
             {action}
@@ -57,10 +57,8 @@ function SectionHeader({
     );
 }
 
-const textLinkClasses =
-    'inline-flex min-h-10 items-center text-sm text-muted underline decoration-outline underline-offset-4 transition-colors duration-100 ease-out hover:text-accent hover:decoration-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent active:text-accent motion-reduce:transition-none';
 const metaColumnClasses =
-    'text-subtle w-[7.25rem] shrink-0 pt-0.5 text-xs tabular-nums';
+    'text-subtle/80 shrink-0 pt-1 text-right text-xs tabular-nums';
 
 export default async function Home() {
     const posts = await getAllPosts();
@@ -133,18 +131,15 @@ export default async function Home() {
                         Writing
                     </SectionHeader>
 
-                    <div>
+                    <div className="mt-1 space-y-4">
                         {featuredNotes.map((post) => (
                             <Link
                                 key={post.id}
                                 href={`/blog/${post.id}`}
-                                className="group border-outline focus-visible:outline-accent flex gap-4 border-b py-5 focus-visible:outline-2 focus-visible:outline-offset-4 sm:gap-6"
+                                className="group focus-visible:outline-accent flex gap-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 sm:gap-6"
                             >
-                                <span className={metaColumnClasses}>
-                                    {formatPostDate(post.pubDate)}
-                                </span>
                                 <div className="min-w-0 flex-1">
-                                    <h3 className="text-foreground group-hover:text-accent group-hover:decoration-accent w-fit text-sm font-medium underline decoration-transparent underline-offset-4 transition-colors duration-100 motion-reduce:transition-none">
+                                    <h3 className="text-foreground group-hover:text-accent group-hover:decoration-accent w-fit text-[0.95rem] leading-6 font-semibold underline decoration-transparent underline-offset-4 transition-colors duration-100 motion-reduce:transition-none">
                                         {post.title}
                                     </h3>
                                     {post.description ? (
@@ -153,6 +148,9 @@ export default async function Home() {
                                         </p>
                                     ) : null}
                                 </div>
+                                <span className={metaColumnClasses}>
+                                    {formatPostDate(post.pubDate)}
+                                </span>
                             </Link>
                         ))}
                     </div>
@@ -161,23 +159,14 @@ export default async function Home() {
                 <section id="experience" className="mb-20 scroll-mt-8">
                     <SectionHeader>Experience</SectionHeader>
 
-                    <div>
+                    <div className="mt-1 space-y-5">
                         {experiences.map((experience) => (
                             <article
                                 key={`${experience.company}-${experience.position}`}
-                                className="border-outline flex gap-4 border-b py-5 sm:gap-6"
+                                className="flex gap-4 py-2 sm:gap-6"
                             >
-                                <p
-                                    className={`${metaColumnClasses} whitespace-nowrap`}
-                                >
-                                    {formatShortMonthYear(
-                                        experience.startDate
-                                    )}{' '}
-                                    -{' '}
-                                    {formatShortMonthYear(experience.endDate)}
-                                </p>
                                 <div className="min-w-0 flex-1">
-                                    <h3 className="text-foreground text-sm font-medium">
+                                    <h3 className="text-foreground text-[0.95rem] leading-6 font-semibold">
                                         {experience.position}{' '}
                                         <span className="text-muted font-normal">
                                             at{' '}
@@ -213,55 +202,61 @@ export default async function Home() {
                                         {experience.description}
                                     </p>
                                 </div>
+                                <p
+                                    className={`${metaColumnClasses} whitespace-nowrap`}
+                                >
+                                    {formatShortMonthYear(
+                                        experience.startDate
+                                    )}{' '}
+                                    -{' '}
+                                    {formatShortMonthYear(experience.endDate)}
+                                </p>
                             </article>
                         ))}
                     </div>
                 </section>
 
                 <section id="work" className="mb-20 scroll-mt-8">
-                    <SectionHeader>Selected work</SectionHeader>
+                    <SectionHeader
+                        action={
+                            <a
+                                href="https://github.com/alok8bb?tab=repositories"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-muted decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent inline-flex min-h-10 items-center text-xs underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                            >
+                                More projects
+                            </a>
+                        }
+                    >
+                        Selected work
+                    </SectionHeader>
 
-                    <div>
+                    <div className="mt-1 space-y-4">
                         {featuredProjects.map((project) => (
                             <article
                                 key={project.title}
-                                className="border-outline flex gap-4 border-b py-5 sm:gap-6"
+                                className="flex gap-4 py-2 sm:gap-6"
                             >
-                                <span className={metaColumnClasses}>
-                                    {project.year}
-                                </span>
                                 <div className="min-w-0 flex-1">
-                                    <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-5">
-                                        <a
-                                            href={
-                                                project.live ?? project.source
-                                            }
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="text-foreground hover:text-accent hover:decoration-accent focus-visible:outline-accent w-fit text-sm font-medium underline decoration-transparent underline-offset-4 transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none"
-                                        >
-                                            {project.title}
-                                        </a>
-                                        <span className="text-subtle shrink-0 text-xs">
-                                            {project.category}
-                                        </span>
-                                    </div>
+                                    <a
+                                        href={project.live ?? project.source}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="text-foreground hover:text-accent hover:decoration-accent focus-visible:outline-accent w-fit text-[0.95rem] leading-6 font-semibold underline decoration-transparent underline-offset-4 transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none"
+                                    >
+                                        {project.title}
+                                    </a>
                                     <p className="text-muted mt-1 max-w-[31rem] text-sm leading-6">
                                         {project.description}
                                     </p>
                                 </div>
+                                <span className={metaColumnClasses}>
+                                    {project.year}
+                                </span>
                             </article>
                         ))}
                     </div>
-
-                    <a
-                        href="https://github.com/alok8bb?tab=repositories"
-                        target="_blank"
-                        rel="noreferrer"
-                        className={`${textLinkClasses} mt-3`}
-                    >
-                        More projects
-                    </a>
                 </section>
             </main>
 
