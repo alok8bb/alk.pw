@@ -13,8 +13,8 @@ export const experiences: Experience[] = [
         company: 'Paystream Finance',
         description:
             'Worked across most of the product as it moved from lending and borrowing into LP and delta-neutral trading tools, covering product UI, backend systems and deployments.',
-        startDate: '2024-03',
-        endDate: '2025-08',
+        startDate: '2025-03',
+        endDate: '2026-05',
         link: 'https://paystream.finance',
     },
     {
