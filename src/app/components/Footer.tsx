@@ -1,35 +1,52 @@
-'use client';
+import LocalTime from './LocalTime';
+import ThemeToggle from './ThemeToggle';
 
-import React, { useState, useEffect } from 'react';
+const footerLinkClasses =
+    'inline-flex min-h-10 items-center text-sm text-muted transition-colors duration-100 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-reduce:transition-none';
 
-const Footer = () => {
-    const [currentTime, setCurrentTime] = useState<Date | null>(null);
-
-    useEffect(() => {
-        const updateTime = () => {
-            setCurrentTime(new Date());
-        };
-
-        updateTime();
-
-        const interval = setInterval(updateTime, 1000);
-        return () => clearInterval(interval);
-    }, []);
-
+export default function Footer() {
     return (
-        <footer className='flex justify-between items-center mt-4'>
-            <span className='text-gray text-sm'>{currentTime?.toLocaleString('en-IN', {
-                timeZone: 'Asia/Kolkata',
-                hour: 'numeric',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: true,
-            }).toUpperCase()}</span>
-
-            {/* Some form of game or activity here */}
-            <span className="text-md text-gray hover:scale-150 transition-all duration-200 hover:cursor-pointer">👾</span>
+        <footer className="border-outline border-t py-5">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <LocalTime />
+                <div className="flex items-center gap-2">
+                    <nav aria-label="Social links">
+                        <ul className="flex flex-wrap gap-x-5">
+                            <li>
+                                <a
+                                    href="https://x.com/alok8bb"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className={footerLinkClasses}
+                                >
+                                    Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://github.com/alok8bb"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className={footerLinkClasses}
+                                >
+                                    GitHub
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://github.com/alok8bb/alk.pw"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className={footerLinkClasses}
+                                >
+                                    Source
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <ThemeToggle />
+                </div>
+            </div>
         </footer>
     );
-};
-
-export default Footer;
+}

@@ -1,6 +1,6 @@
 ---
 title: 'Actions & Blinks on Solana'
-description: 'actions and blinks explained'
+description: 'Actions and Blinks explained'
 pubDate: '13 Sep 2024'
 category: 'tech'
 ---

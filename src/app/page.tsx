@@ -1,268 +1,271 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
+import Link from 'next/link';
+import { getAllPosts } from '@/lib/api';
+import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 import { experiences } from './data/experience';
 import { projects } from './data/projects';
 
-type ContributionDay = { date: string; count: number; level: number };
+const monthYearFormatter = new Intl.DateTimeFormat('en', {
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'UTC',
+});
 
-function SectionHeader({ children }: { children: React.ReactNode }) {
+const shortMonthYearFormatter = new Intl.DateTimeFormat('en', {
+    month: 'short',
+    year: '2-digit',
+    timeZone: 'UTC',
+});
+
+function formatMonthYear(value: string) {
+    if (value === 'present') return 'Present';
+    if (/^\d{4}$/.test(value)) return value;
+
+    return monthYearFormatter.format(new Date(`${value}-01T00:00:00Z`));
+}
+
+function formatShortMonthYear(value: string) {
+    if (value === 'present') return 'Present';
+    if (/^\d{4}$/.test(value)) return value;
+
+    const [month, year] = shortMonthYearFormatter
+        .format(new Date(`${value}-01T00:00:00Z`))
+        .split(' ');
+
+    return `${month} '${year}`;
+}
+
+function formatPostDate(value: string) {
+    return monthYearFormatter.format(new Date(`${value}T00:00:00Z`));
+}
+
+function SectionHeader({
+    children,
+    action,
+}: {
+    children: ReactNode;
+    action?: ReactNode;
+}) {
     return (
-        <div className="mb-6">
-            <h2 className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+        <header className="border-outline mb-1 flex min-h-11 items-center border-b">
+            <h2 className="text-accent flex-1 text-xs font-medium tracking-[0.14em] uppercase">
                 {children}
             </h2>
-            <div className="mt-3 h-px bg-outline" />
-        </div>
+            {action}
+        </header>
     );
 }
 
-const LEVELS = [
-    'bg-white/[0.04]',
-    'bg-white/[0.1]',
-    'bg-white/[0.2]',
-    'bg-white/[0.35]',
-    'bg-white/[0.55]',
-];
+const textLinkClasses =
+    'inline-flex min-h-10 items-center text-sm text-muted underline decoration-outline underline-offset-4 transition-colors duration-100 ease-out hover:text-accent hover:decoration-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent active:text-accent motion-reduce:transition-none';
+const metaColumnClasses =
+    'text-subtle w-[7.25rem] shrink-0 pt-0.5 text-xs tabular-nums';
 
-function CommitGrid() {
-    const [weeks, setWeeks] = useState<ContributionDay[][]>([]);
-
-    useEffect(() => {
-        fetch('/api/contributions')
-            .then((res) => res.json())
-            .then((data: { contributions: ContributionDay[] }) => {
-                const grouped: ContributionDay[][] = [];
-                let week: ContributionDay[] = [];
-                for (const day of data.contributions) {
-                    const dow = new Date(day.date).getDay();
-                    if (dow === 0 && week.length > 0) {
-                        grouped.push(week);
-                        week = [];
-                    }
-                    week.push(day);
-                }
-                if (week.length > 0) grouped.push(week);
-                setWeeks(grouped);
-            })
-            .catch(() => {});
-    }, []);
-
-    if (weeks.length === 0) return null;
-
-    return (
-        <div className="grid w-full gap-[3px]" style={{ gridTemplateColumns: `repeat(${weeks.length}, 1fr)` }}>
-            {weeks.map((week, wi) => (
-                <div key={wi} className="flex flex-col gap-[3px]">
-                    {week.map((day, di) => (
-                        <div
-                            key={di}
-                            title={`${day.date}: ${day.count} contribution${day.count !== 1 ? 's' : ''}`}
-                            className={`aspect-square w-full rounded-[2px] ${LEVELS[day.level]}`}
-                        />
-                    ))}
-                </div>
-            ))}
-        </div>
-    );
-}
-
-export default function Home() {
-    const [currentTime, setCurrentTime] = useState<string>('');
-
-    useEffect(() => {
-        const update = () => {
-            setCurrentTime(
-                new Date()
-                    .toLocaleString('en-IN', {
-                        timeZone: 'Asia/Kolkata',
-                        hour: 'numeric',
-                        minute: '2-digit',
-                        hour12: true,
-                    })
-                    .toLowerCase()
-            );
-        };
-        update();
-        const interval = setInterval(update, 60000);
-        return () => clearInterval(interval);
-    }, []);
+export default async function Home() {
+    const posts = await getAllPosts();
+    const featuredProjects = projects.filter((project) => project.featured);
+    const featuredNotes = posts
+        .filter((post) => post.category.toLowerCase() === 'tech')
+        .slice(0, 3);
 
     return (
         <>
-            {/* Hero */}
-            <section className="mt-8 mb-20">
-                <h1 className="text-[2rem] font-semibold leading-tight text-white">
-                    Alok Pawar
-                </h1>
-                <p className="mt-1.5 text-sm tracking-wide text-muted">
-                    Software Engineer
-                </p>
+            <Navbar />
 
-                <div className="mt-8 max-w-[540px] space-y-4 leading-[1.7] text-muted">
-                    <p>
-                        I am a self-taught software engineer and computer
-                        science student focused on blockchain and the future of
-                        finance and engineering.
+            <main>
+                <section className="mb-20">
+                    <h1 className="text-foreground text-4xl leading-tight font-bold">
+                        Alok Pawar
+                    </h1>
+                    <p className="text-muted mt-2 text-sm leading-6">
+                        <span className="text-foreground font-bold">
+                            Developer
+                        </span>
+                        . Bhopal, IN 🇮🇳
                     </p>
-                    <p>
-                        Previously built full-stack products at{' '}
-                        <a
-                            href="https://paystream.finance"
-                            target="_blank"
-                            className="text-white"
-                        >
-                            Paystream Finance
-                        </a>
-                        . Before that, developed software at{' '}
-                        <span className="text-white">株式会社HumAIn</span>,
-                        working across frontend and backend systems.
-                    </p>
-                    <p>
-                        I enjoy building highly polished, performant products
-                        and exploring the intersection of decentralized systems
-                        and real-world utility.
-                    </p>
-                    <p>
-                        You can reach me at{' '}
-                        <a
-                            href="mailto:alok8bb@gmail.com"
-                            className="text-white underline decoration-white/30 underline-offset-2 hover:decoration-white/60"
-                        >
-                            alok8bb@gmail.com
-                        </a>{' '}
-                        or on{' '}
-                        <a
-                            href="https://github.com/alok8bb"
-                            target="_blank"
-                            className="text-white underline decoration-white/30 underline-offset-2 hover:decoration-white/60"
-                        >
-                            GitHub
-                        </a>
-                        .
-                    </p>
-                </div>
-            </section>
 
-            {/* Work */}
-            <section className="mb-20">
-                <SectionHeader>Work</SectionHeader>
-                <div className="flex flex-col">
-                    {experiences.map((exp, i) => (
-                        <div key={i}>
-                            {/* Role row */}
-                            <div className="flex items-baseline py-3">
-                                <span className="w-20 shrink-0 text-sm text-muted">
-                                    {i === 0 ||
-                                    experiences[i - 1].year !== exp.year
-                                        ? exp.year
-                                        : ''}
-                                </span>
-                                <span className="flex-1 text-sm font-medium text-white">
-                                    {exp.position}
-                                </span>
-                                <span className="text-sm text-muted">
-                                    {exp.endDate === 'Present'
-                                        ? 'Present'
-                                        : exp.endDate}
-                                </span>
-                            </div>
-                            {/* Company row */}
-                            <div className="flex items-baseline pb-3">
-                                <span className="w-20 shrink-0" />
-                                <div className="flex-1">
-                                    {exp.link ? (
-                                        <a
-                                            href={exp.link}
-                                            target="_blank"
-                                            className="text-sm text-white/70 hover:text-white"
-                                        >
-                                            {exp.company}
-                                        </a>
-                                    ) : (
-                                        <span className="text-sm text-white/70">
-                                            {exp.company}
-                                        </span>
-                                    )}
-                                </div>
-                                <span className="text-sm text-muted">
-                                    {exp.startDate}
-                                </span>
-                            </div>
-                            {i < experiences.length - 1 && (
-                                <div className="h-px bg-outline" />
-                            )}
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Projects */}
-            <section className="mb-20">
-                <SectionHeader>Projects</SectionHeader>
-                <div className="flex flex-col">
-                    {projects.map((project, i) => (
-                        <a
-                            key={i}
-                            href={project.source}
-                            target="_blank"
-                            className="group flex items-baseline py-3"
-                        >
-                            <span className="w-20 shrink-0 text-sm text-muted">
-                                {i === 0 ||
-                                projects[i - 1].year !== project.year
-                                    ? project.year
-                                    : ''}
-                            </span>
-                            <span className="flex-1 text-sm font-medium text-white group-hover:text-white/70">
-                                {project.title}
-                            </span>
-                            <span className="text-sm text-muted">
-                                {project.category}
-                            </span>
-                        </a>
-                    ))}
-                </div>
-            </section>
-
-            {/* Commit Activity */}
-            <section className="mb-20">
-                <SectionHeader>Commit Activity</SectionHeader>
-                <CommitGrid />
-            </section>
-
-            {/* Footer */}
-            <footer>
-                <div className="h-px bg-outline" />
-                <div className="flex items-center justify-between py-6">
-                    <span className="text-sm text-muted">
-                        {currentTime && <>{currentTime} in Bhopal, India</>}
-                    </span>
-                    <div className="flex gap-5 text-sm text-muted">
-                        <a
-                            href="https://x.com/alok8bb"
-                            target="_blank"
-                            className="hover:text-white"
-                        >
-                            Twitter
-                        </a>
-                        <a
-                            href="https://github.com/alok8bb"
-                            target="_blank"
-                            className="hover:text-white"
-                        >
-                            GitHub
-                        </a>
-                        <a
-                            href="https://github.com/alok8bb/alk.pw"
-                            target="_blank"
-                            className="underline decoration-white/30 underline-offset-2 hover:text-white hover:decoration-white/60"
-                        >
-                            Source
-                        </a>
+                    <div className="text-muted mt-6 max-w-[35rem] space-y-4 text-sm leading-7">
+                        <p>
+                            I'm a developer with over 4 years of experience
+                            building software for web, android and blockchain. I
+                            have worked with Go, Rust, Python, TypeScript and
+                            various languages and frameworks.
+                        </p>
+                        <p>
+                            I have also spent a lot of time tinkering with linux
+                            back in the day. Currently finance, blockchains and
+                            consumer applications excite me the most.
+                        </p>
+                        <p>
+                            You can reach me by{' '}
+                            <a
+                                href="mailto:alok8bb@gmail.com"
+                                className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                            >
+                                Email
+                            </a>{' '}
+                            or find me on{' '}
+                            <a
+                                href="https://t.me/broken_vortex"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                            >
+                                Telegram
+                            </a>
+                            .
+                        </p>
                     </div>
-                </div>
-            </footer>
+                </section>
+
+                <section id="writing" className="mb-20 scroll-mt-8">
+                    <SectionHeader
+                        action={
+                            <Link
+                                href="/blog"
+                                className="text-muted decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent inline-flex min-h-10 items-center text-xs underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                            >
+                                All posts
+                            </Link>
+                        }
+                    >
+                        Writing
+                    </SectionHeader>
+
+                    <div>
+                        {featuredNotes.map((post) => (
+                            <Link
+                                key={post.id}
+                                href={`/blog/${post.id}`}
+                                className="group border-outline focus-visible:outline-accent flex gap-4 border-b py-5 focus-visible:outline-2 focus-visible:outline-offset-4 sm:gap-6"
+                            >
+                                <span className={metaColumnClasses}>
+                                    {formatPostDate(post.pubDate)}
+                                </span>
+                                <div className="min-w-0 flex-1">
+                                    <h3 className="text-foreground group-hover:text-accent group-hover:decoration-accent w-fit text-sm font-medium underline decoration-transparent underline-offset-4 transition-colors duration-100 motion-reduce:transition-none">
+                                        {post.title}
+                                    </h3>
+                                    {post.description ? (
+                                        <p className="text-muted mt-1 max-w-[29rem] text-sm leading-6">
+                                            {post.description}
+                                        </p>
+                                    ) : null}
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
+
+                <section id="experience" className="mb-20 scroll-mt-8">
+                    <SectionHeader>Experience</SectionHeader>
+
+                    <div>
+                        {experiences.map((experience) => (
+                            <article
+                                key={`${experience.company}-${experience.position}`}
+                                className="border-outline flex gap-4 border-b py-5 sm:gap-6"
+                            >
+                                <p
+                                    className={`${metaColumnClasses} whitespace-nowrap`}
+                                >
+                                    {formatShortMonthYear(
+                                        experience.startDate
+                                    )}{' '}
+                                    -{' '}
+                                    {formatShortMonthYear(experience.endDate)}
+                                </p>
+                                <div className="min-w-0 flex-1">
+                                    <h3 className="text-foreground text-sm font-medium">
+                                        {experience.position}{' '}
+                                        <span className="text-muted font-normal">
+                                            at{' '}
+                                            {experience.link ? (
+                                                <a
+                                                    href={experience.link}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent ml-1 inline-flex items-center gap-1.5 align-middle underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                                                >
+                                                    {experience.company ===
+                                                    'Paystream Finance' ? (
+                                                        <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center overflow-hidden rounded-[5px] align-middle">
+                                                            <img
+                                                                src="/logo/paystream.jpg"
+                                                                alt=""
+                                                                width={16}
+                                                                height={16}
+                                                                className="block h-full w-full object-cover"
+                                                            />
+                                                        </span>
+                                                    ) : null}
+                                                    <span>
+                                                        {experience.company}
+                                                    </span>
+                                                </a>
+                                            ) : (
+                                                experience.company
+                                            )}
+                                        </span>
+                                    </h3>
+                                    <p className="text-muted mt-2 max-w-[35rem] text-sm leading-6">
+                                        {experience.description}
+                                    </p>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </section>
+
+                <section id="work" className="mb-20 scroll-mt-8">
+                    <SectionHeader>Selected work</SectionHeader>
+
+                    <div>
+                        {featuredProjects.map((project) => (
+                            <article
+                                key={project.title}
+                                className="border-outline flex gap-4 border-b py-5 sm:gap-6"
+                            >
+                                <span className={metaColumnClasses}>
+                                    {project.year}
+                                </span>
+                                <div className="min-w-0 flex-1">
+                                    <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-5">
+                                        <a
+                                            href={
+                                                project.live ?? project.source
+                                            }
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="text-foreground hover:text-accent hover:decoration-accent focus-visible:outline-accent w-fit text-sm font-medium underline decoration-transparent underline-offset-4 transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none"
+                                        >
+                                            {project.title}
+                                        </a>
+                                        <span className="text-subtle shrink-0 text-xs">
+                                            {project.category}
+                                        </span>
+                                    </div>
+                                    <p className="text-muted mt-1 max-w-[31rem] text-sm leading-6">
+                                        {project.description}
+                                    </p>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+
+                    <a
+                        href="https://github.com/alok8bb?tab=repositories"
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`${textLinkClasses} mt-3`}
+                    >
+                        More projects
+                    </a>
+                </section>
+            </main>
+
+            <Footer />
         </>
     );
 }

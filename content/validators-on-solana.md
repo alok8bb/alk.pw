@@ -1,6 +1,6 @@
 ---
 title: 'Validators on Solana Blockchain'
-description: "Understanding the solana validators and ecosystem"
+description: "Understanding the Solana validators and ecosystem"
 pubDate: '16 Sep 2025'
 category: 'tech'
 ---

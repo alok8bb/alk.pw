@@ -1,4 +1,5 @@
 import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 import { getPostById, getAllPosts } from '@/lib/api';
 import { ArrowLeftIcon } from 'lucide-react';
 import Link from 'next/link';
@@ -71,26 +72,33 @@ export default async function PostLayout({
     return (
         <>
             <Navbar />
-            <div className="flex items-center gap-2 text-gray transition-colors duration-300 hover:text-white mb-4 hover:cursor-pointer">
-                <ArrowLeftIcon className="h-4 w-4" />
-                <Link href="/blog">back</Link>
-            </div>
+            <Link
+                href="/blog"
+                className="text-muted hover:text-accent focus-visible:outline-accent mb-4 inline-flex min-h-10 items-center gap-2 text-sm transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none"
+            >
+                <ArrowLeftIcon aria-hidden="true" className="h-4 w-4" />
+                Back
+            </Link>
             <article className="flex flex-col gap-2">
                 <div className="mb-4">
-                    <h1 className="text-3xl font-bold text-white">
+                    <h1 className="text-foreground text-3xl font-bold">
                         {post.title}
                     </h1>
 
-                    <time dateTime={post.pubDate} className="text-xs text-gray">
+                    <time
+                        dateTime={post.pubDate}
+                        className="text-subtle text-xs"
+                    >
                         {format(parseISO(post.pubDate), 'LLLL d, yyyy')}
                     </time>
                 </div>
                 <div
-                    className="prose text-white [&>*:last-child]:mb-0 [&>*]:mb-3 rehype-content"
+                    className="rehype-content text-foreground prose [&>*]:mb-3 [&>*:last-child]:mb-0"
                     dangerouslySetInnerHTML={{ __html: post.html }}
                 />
                 <ZoomImages />
             </article>
+            <Footer />
         </>
     );
 }

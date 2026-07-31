@@ -1,35 +1,45 @@
 'use client';
 
-import React from 'react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-const Navbar = () => {
+const links = [
+    { href: '/', label: 'Home' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/more', label: 'More' },
+] as const;
+
+export default function Navbar() {
     const pathname = usePathname();
 
     return (
-        <header className="flex flex-col justify-end my-12">
-            <div className='flex gap-4 justify-end text-gray'>
-                <a 
-                    className={`hover:text-white hover:cursor-pointer transition-all duration-300 ${pathname === '/' ? 'text-white' : ''}`} 
-                    href="/"
-                >
-                    Home
-                </a>
-                <a
-                    className={`hover:text-white hover:cursor-pointer transition-all duration-300 ${pathname === '/blog' ? 'text-white' : ''}`}
-                    href="/blog"
-                >
-                    Blog
-                </a>
-                <a
-                    className={`hover:text-white hover:cursor-pointer transition-all duration-300 ${pathname === '/more' ? 'text-white' : ''}`}
-                    href="/more"
-                >
-                    More
-                </a>
-            </div>
+        <header className="mb-16 flex min-h-10 items-center justify-end">
+            <nav aria-label="Primary navigation">
+                <ul className="flex items-center gap-2 sm:gap-4">
+                    {links.map((link) => {
+                        const isActive =
+                            link.href === '/'
+                                ? pathname === '/'
+                                : pathname.startsWith(link.href);
+
+                        return (
+                            <li key={link.href}>
+                                <Link
+                                    href={link.href}
+                                    aria-current={isActive ? 'page' : undefined}
+                                    className={`focus-visible:outline-accent inline-flex min-h-10 items-center px-1 text-sm transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none ${
+                                        isActive
+                                            ? 'text-foreground decoration-outline underline underline-offset-4'
+                                            : 'text-muted hover:text-foreground'
+                                    }`}
+                                >
+                                    {link.label}
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </nav>
         </header>
     );
-};
-
-export default Navbar;
+}

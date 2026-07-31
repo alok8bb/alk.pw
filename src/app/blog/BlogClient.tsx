@@ -2,6 +2,7 @@
 
 import { format, parseISO } from 'date-fns';
 import Chip from '../components/Chip';
+import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import { useState, useRef, useEffect } from 'react';
 
@@ -29,8 +30,10 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
         const handleKeyDown = (e: KeyboardEvent) => {
             // Focus search on '/' key press
             if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-                if (document.activeElement?.tagName === 'INPUT' || 
-                    document.activeElement?.tagName === 'TEXTAREA') {
+                if (
+                    document.activeElement?.tagName === 'INPUT' ||
+                    document.activeElement?.tagName === 'TEXTAREA'
+                ) {
                     return;
                 }
                 e.preventDefault();
@@ -44,8 +47,10 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
 
     // Filter posts based on search query and category
     const filteredPosts = posts.filter((post) => {
-        const matchesCategory = activeCategory === 'all' || post.category === activeCategory;
-        const matchesSearch = searchQuery === '' || 
+        const matchesCategory =
+            activeCategory === 'all' || post.category === activeCategory;
+        const matchesSearch =
+            searchQuery === '' ||
             post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             post.description.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesCategory && matchesSearch;
@@ -58,10 +63,10 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                 {/* Header */}
                 <section className="flex flex-col gap-2">
                     <div>
-                        <h1 className="text-2xl font-semibold text-white">
+                        <h1 className="text-foreground text-2xl font-semibold">
                             Brokenstack
                         </h1>
-                        <p className="text-gray">blog & notes by alok</p>
+                        <p className="text-muted">Blog and notes by Alok.</p>
                     </div>
                 </section>
 
@@ -84,18 +89,18 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                         ))}
                     </div>
                     <div>
-                        <div className="relative w-full sm:w-72 hidden sm:block">
+                        <div className="relative hidden w-full sm:block sm:w-72">
                             <input
                                 ref={searchInputRef}
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder="Search"
                                 aria-label="Search posts"
-                                className="w-full rounded-md border border-gray bg-transparent px-3 py-2 text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-black"
+                                className="border-outline text-foreground placeholder:text-subtle focus-visible:outline-accent min-h-10 w-full rounded-md border bg-transparent px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2"
                                 type="text"
                                 inputMode="search"
                             />
-                            <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 rounded border px-1 text-[10px] opacity-50">
+                            <span className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 rounded border px-1 text-[10px] opacity-50">
                                 /
                             </span>
                         </div>
@@ -103,34 +108,35 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                 </div>
 
                 {/* Blog List */}
-                <section className="flex flex-col gap-8" onMouseLeave={() => setHoveredPost(null)}>
+                <section
+                    className="flex flex-col gap-8"
+                    onMouseLeave={() => setHoveredPost(null)}
+                >
                     {filteredPosts.map((post, idx: number) => (
-                            <a
-                                key={idx}
-                                href={`/blog/${post.id}`}
-                                className={`flex flex-col hover:cursor-pointer transition-opacity duration-300 ${
-                                    hoveredPost && hoveredPost !== post.title 
-                                        ? 'opacity-30' 
-                                        : 'opacity-100'
-                                }`}
-                                onMouseEnter={() => setHoveredPost(post.title)}
-                            >
-                                <h2 className="text-xl font-semibold text-white">
-                                    {post.title}
-                                </h2>
-                                <p className="text-md truncate text-gray">
-                                    {post.description}
-                                </p>
-                                <p className="min-w-fit text-xs text-gray">
-                                    {format(
-                                        parseISO(post.pubDate),
-                                        'd LLL, yyyy'
-                                    )}
-                                </p>
-                            </a>
-                        ))}
+                        <a
+                            key={idx}
+                            href={`/blog/${post.id}`}
+                            className={`group focus-visible:outline-accent flex flex-col transition-opacity duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none ${
+                                hoveredPost && hoveredPost !== post.title
+                                    ? 'opacity-30'
+                                    : 'opacity-100'
+                            }`}
+                            onMouseEnter={() => setHoveredPost(post.title)}
+                        >
+                            <h2 className="text-foreground group-hover:text-accent text-xl font-semibold transition-colors duration-100 motion-reduce:transition-none">
+                                {post.title}
+                            </h2>
+                            <p className="text-md text-muted truncate">
+                                {post.description}
+                            </p>
+                            <p className="text-subtle min-w-fit text-xs">
+                                {format(parseISO(post.pubDate), 'd LLL, yyyy')}
+                            </p>
+                        </a>
+                    ))}
                 </section>
             </main>
+            <Footer />
         </>
     );
 }

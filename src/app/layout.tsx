@@ -1,22 +1,23 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
-
-const geistMono = localFont({
-    src: './fonts/GeistMonoVF.woff',
-    variable: '--font-geist-mono',
-    weight: '100 900',
+const inter = Inter({
+    subsets: ['latin'],
+    variable: '--font-inter',
+    display: 'swap',
 });
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://alk.pw'),
-    title: 'Alok',
-    description: 'Personal website of Alok',
+    title: 'Alok Pawar — Software Engineer',
+    description:
+        'Software engineer working across web, mobile, and blockchain systems.',
     openGraph: {
-        title: 'Alok',
+        title: 'Alok Pawar — Software Engineer',
+        description:
+            'Software engineer working across web, mobile, and blockchain systems.',
         images: [
             {
                 url: '/og_image.png',
@@ -31,7 +32,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Alok',
+        title: 'Alok Pawar — Software Engineer',
+        description:
+            'Software engineer working across web, mobile, and blockchain systems.',
         images: ['/og_image.png'],
     },
 };
@@ -42,25 +45,39 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className="h-full">
+        <html
+            lang="en"
+            className="h-full"
+            data-theme="dark"
+            suppressHydrationWarning
+        >
             <head>
-                <script
-                    defer
-                    data-domain="alk.pw"
-                    src="https://analytics.alk.pw/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js"
-                ></script>
-                    <script
+                <Script id="theme-init" strategy="beforeInteractive">
+                    {`let theme;
+                    try {
+                        theme = localStorage.getItem('theme');
+                    } catch {}
+                    if (theme === 'light' || theme === 'dark') {
+                        document.documentElement.dataset.theme = theme;
+                    }`}
+                </Script>
+            </head>
+            <body className={`${inter.variable} h-full antialiased`}>
+                <div className="mx-auto flex min-h-screen max-w-4xl flex-col px-6 py-12 sm:py-16">
+                    {children}
+                </div>
+                <Script
+                    id="plausible-init"
+                    strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: `window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }`,
                     }}
                 />
-            </head>
-            <body
-                className={`${inter.className} ${geistMono.variable} h-full antialiased`}
-            >
-                <div className="mx-auto flex min-h-screen max-w-2xl flex-col px-6 py-20">
-                    {children}
-                </div>
+                <Script
+                    data-domain="alk.pw"
+                    strategy="lazyOnload"
+                    src="https://analytics.alk.pw/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js"
+                />
             </body>
         </html>
     );

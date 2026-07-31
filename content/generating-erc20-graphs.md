@@ -1,6 +1,6 @@
 ---
 title: 'Plotting candlestick charts for ERC20 tokens using GeckoTerminal API & Plotly'
-description: ""
+description: "Simple erc20 chart plotting snippet"
 pubDate: '27 Jun 2024'
 category: 'tech'
 ---

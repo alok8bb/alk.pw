@@ -6,7 +6,7 @@ export default function More() {
         <>
             <Navbar />
             <main className="flex-1">
-                <div className="flex flex-col gap-2 text-white">
+                <div className="text-muted flex flex-col gap-2 leading-7">
                     <img
                         src="/hkg_night_sky.jpeg"
                         alt="Picture of Hong Kong building at night"
@@ -16,7 +16,8 @@ export default function More() {
                         I started learning coding in March 2020. Around the same
                         time I tried installing ubuntu, failed and that's how I
                         got into Linux. I picked up C++, then Python then moved
-                        on to Android development and tried a lot of other technologies.
+                        on to Android development and tried a lot of other
+                        technologies.
                     </p>
                     <p>
                         What started as just experimenting slowly turned into
@@ -32,7 +33,7 @@ export default function More() {
                     <div>
                         <div className="space-y-2">
                             <div>
-                                <h2 className="text-md font-semibold">
+                                <h2 className="text-foreground text-md font-semibold">
                                     main laptop
                                 </h2>
                                 <ul className="list-inside list-disc">
@@ -43,7 +44,9 @@ export default function More() {
                             </div>
 
                             <div>
-                                <h2 className="text-md font-semibold">pc</h2>
+                                <h2 className="text-foreground text-md font-semibold">
+                                    pc
+                                </h2>
                                 <ul className="list-inside list-disc">
                                     <li>GPU: AMD Radeon RX 6750 XT</li>
                                     <li>Motherboard: MSI Pro A620M-E</li>
@@ -52,7 +55,7 @@ export default function More() {
                             </div>
 
                             <div>
-                                <h2 className="text-md font-semibold">
+                                <h2 className="text-foreground text-md font-semibold">
                                     others
                                 </h2>
                                 <ul className="list-inside list-disc">

@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-background: #000000;
+    --color-surface-low: #0a0a0a;
+    --color-surface-high: #171717;
+    --color-foreground: #f5f5f5;
+    --color-muted: #a3a3a3;
+    --color-subtle: #858585;
+    --color-accent: #f5f5f5;
+    --color-outline: rgba(245, 245, 245, 0.13);
+    --font-sans: var(--font-inter);
+    --font-mono: var(--font-geist-mono);
+}
+
+body {
+    color: var(--color-foreground);
+    background: var(--color-background);
+    font-family: var(--font-sans), sans-serif;
+}
+
+::selection {
+    color: var(--color-background);
+    background: var(--color-foreground);
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+/* Code block layout fixes for rehype-pretty-code */
+pre {
+    overflow-x: auto;
+    max-width: 100%;
+    padding: 20px 20px 20px 20px !important;
+}
+
+pre code {
+    white-space: pre;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+@layer components {
+    /* Headings */
+    .rehype-content h1 {
+        @apply mt-8 mb-4 text-3xl leading-tight font-bold text-white;
+    }
+    .rehype-content h2 {
+        @apply mt-6 mb-3 text-2xl leading-snug font-semibold text-white;
+    }
+    .rehype-content h3 {
+        @apply mt-5 mb-2 text-xl leading-snug font-semibold text-white;
+    }
+    .rehype-content h4 {
+        @apply mt-4 mb-2 text-lg font-semibold text-white;
+    }
+
+    /* Paragraphs */
+    .rehype-content p {
+        @apply mb-4 text-base leading-relaxed text-gray-300;
+    }
+
+    /* Lists */
+    .rehype-content ul {
+        @apply mb-4 list-inside list-disc space-y-1 pl-5;
+    }
+    .rehype-content ol {
+        @apply mb-4 list-inside list-decimal space-y-1 pl-5;
+    }
+    .rehype-content li {
+        @apply leading-relaxed;
+    }
+
+    /* Blockquotes */
+    .rehype-content blockquote {
+        @apply mb-4 border-l-4 pl-4 italic;
+    }
+
+    /* Links */
+    .rehype-content a {
+        @apply text-gray-300 underline hover:no-underline;
+    }
+
+    /* Tables */
+    .rehype-content table {
+        @apply my-4 w-full table-auto border-collapse;
+    }
+    .rehype-content th {
+        @apply border px-3 py-2 font-semibold;
+    }
+    .rehype-content td {
+        @apply border px-3 py-2;
+    }
+
+    /* Horizontal Rule */
+    .rehype-content hr {
+        @apply my-6 border-t;
+    }
+
+    /* Images */
+    .rehype-content img {
+        @apply my-4 h-auto max-w-full rounded;
+    }
+}
