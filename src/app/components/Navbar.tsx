@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import ThemeToggle from './ThemeToggle';
 
 const links = [
     { href: '/', label: 'Home' },
@@ -13,7 +14,7 @@ export default function Navbar() {
     const pathname = usePathname();
 
     return (
-        <header className="mb-16 flex min-h-10 items-center justify-end">
+        <header className="mb-16 flex min-h-10 items-center justify-end gap-4">
             <nav aria-label="Primary navigation">
                 <ul className="flex items-center gap-2 sm:gap-4">
                     {links.map((link) => {
@@ -40,6 +41,7 @@ export default function Navbar() {
                     })}
                 </ul>
             </nav>
+            <ThemeToggle />
         </header>
     );
 }

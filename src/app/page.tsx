@@ -58,7 +58,7 @@ function SectionHeader({
 }) {
     return (
         <header className="mb-2 flex min-h-11 items-center">
-            <h2 className="text-foreground flex-1 text-xs font-semibold tracking-[0.18em] uppercase">
+            <h2 className="section-heading text-foreground flex-1 text-sm leading-5">
                 {children}
             </h2>
             {action}

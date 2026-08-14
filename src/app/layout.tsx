@@ -72,7 +72,7 @@ export default function RootLayout({
                 </Script>
             </head>
             <body className={`${fontVariables} h-full antialiased`}>
-                <div className="mx-auto flex min-h-screen max-w-[50rem] flex-col px-6 py-12 sm:py-16">
+                <div className="mx-auto flex min-h-screen max-w-[50rem] flex-col px-6 pt-12 pb-8 sm:pt-16 sm:pb-10">
                     {children}
                 </div>
                 <Script

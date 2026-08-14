@@ -63,7 +63,7 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                 {/* Header */}
                 <section className="flex flex-col gap-2">
                     <div>
-                        <h1 className="text-foreground text-2xl font-semibold">
+                        <h1 className="hero-name text-foreground text-[3rem] leading-none">
                             Brokenstack
                         </h1>
                         <p className="text-muted">Blog and notes by Alok.</p>
@@ -134,6 +134,30 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                             </p>
                         </a>
                     ))}
+                </section>
+
+                <section className="mt-2">
+                    <p className="text-muted text-sm leading-6">
+                        More on{' '}
+                        <a
+                            href="https://blog.realogs.in/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                        >
+                            Realogs
+                        </a>
+                        {' '}
+                        &middot;{' '}
+                        <a
+                            href="https://never-ending.space/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                        >
+                            Never Ending
+                        </a>
+                    </p>
                 </section>
             </main>
             <Footer />
