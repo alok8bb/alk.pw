@@ -29,16 +29,16 @@ const initialOrder: StackCard[] = [
 
 const photos = [
     {
-        src: '/photo-placeholders/workspace.jpg',
-        label: 'workspace',
+        src: '/photo-stack/portrait-laptop.jpg',
+        label: 'Alok pictured on a laptop screen',
     },
     {
-        src: '/photo-placeholders/working.jpg',
-        label: 'working at a laptop',
+        src: '/photo-stack/rainy-window-code.jpg',
+        label: 'coding beside a rainy window',
     },
     {
-        src: '/photo-placeholders/travel.jpg',
-        label: 'view through an airplane window',
+        src: '/photo-stack/porsche-full-car.jpg',
+        label: 'a white Porsche on a city street',
     },
 ] as const;
 
@@ -74,6 +74,11 @@ export default function PhotoStack() {
     const cycleLock = useRef(false);
     const nextInstance = useRef(initialOrder.length);
     const isSpread = isHovered || isFocused || isTouchExpanded;
+    const stackScale = isHovered
+        ? 1.32
+        : isFocused || isTouchExpanded
+          ? 1.16
+          : 1;
     const tiltX = useMotionValue(0);
     const tiltY = useMotionValue(0);
     const hoverScale = useMotionValue(1);
@@ -86,8 +91,8 @@ export default function PhotoStack() {
     });
 
     useEffect(() => {
-        hoverScale.set(isSpread ? 1.08 : 1);
-    }, [hoverScale, isSpread]);
+        hoverScale.set(stackScale);
+    }, [hoverScale, stackScale]);
 
     useEffect(() => {
         if (!isTouchExpanded) return;
@@ -277,7 +282,8 @@ export default function PhotoStack() {
                                             alt=""
                                             fill
                                             draggable={false}
-                                            sizes="(min-width: 768px) 182px, 0px"
+                                            quality={95}
+                                            sizes="(min-width: 768px) 320px, 0px"
                                             className="photo-stack-image"
                                         />
                                         <span className="photo-stack-image-shade" />
