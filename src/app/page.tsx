@@ -85,21 +85,12 @@ export default async function Home() {
                     <h1 className="hero-name text-foreground text-[3rem] leading-none">
                         Alok Pawar
                     </h1>
-                    <div className="mt-2 flex flex-wrap items-center gap-2">
-                        <p className="text-muted text-sm leading-6">
-                            <span className="text-foreground font-bold">
-                                Developer
-                            </span>{' '}
-                            &middot; Hyderabad, IN 🇮🇳 &middot; Remote
-                        </p>
-                        <span className="border-outline bg-surface-low text-muted inline-flex min-h-8 items-center gap-2 rounded-full border px-3 text-xs font-medium">
-                            <span
-                                aria-hidden="true"
-                                className="h-1.5 w-1.5 rounded-full bg-emerald-500 ring-4 ring-emerald-500/10"
-                            />
-                            Open to full-time roles
-                        </span>
-                    </div>
+                    <p className="text-muted mt-2 text-sm leading-6">
+                        <span className="text-foreground font-bold">
+                            Developer
+                        </span>{' '}
+                        &middot; Hyderabad, IN 🇮🇳 &middot; Remote
+                    </p>
 
                     <div className="text-muted mt-6 max-w-[35rem] space-y-4 text-sm leading-7">
                         <p>
@@ -114,7 +105,10 @@ export default async function Home() {
                             consumer applications excite me the most.
                         </p>
                         <p>
-                            You can reach me by{' '}
+                            <span className="text-foreground font-semibold">
+                                I&apos;m open to full-time positions.
+                            </span>{' '}
+                            Reach me by{' '}
                             <a
                                 href="mailto:alok8bb@gmail.com"
                                 className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
