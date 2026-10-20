@@ -85,12 +85,21 @@ export default async function Home() {
                     <h1 className="hero-name text-foreground text-[3rem] leading-none">
                         Alok Pawar
                     </h1>
-                    <p className="text-muted mt-2 text-sm leading-6">
-                        <span className="text-foreground font-bold">
-                            Developer
+                    <div className="mt-2 flex flex-wrap items-center gap-2">
+                        <p className="text-muted text-sm leading-6">
+                            <span className="text-foreground font-bold">
+                                Developer
+                            </span>{' '}
+                            &middot; Hyderabad, IN 🇮🇳 &middot; Remote
+                        </p>
+                        <span className="border-outline bg-surface-low text-muted inline-flex min-h-8 items-center gap-2 rounded-full border px-3 text-xs font-medium">
+                            <span
+                                aria-hidden="true"
+                                className="h-1.5 w-1.5 rounded-full bg-emerald-500 ring-4 ring-emerald-500/10"
+                            />
+                            Open to full-time roles
                         </span>
-                        . Bhopal, IN 🇮🇳
-                    </p>
+                    </div>
 
                     <div className="text-muted mt-6 max-w-[35rem] space-y-4 text-sm leading-7">
                         <p>

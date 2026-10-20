@@ -1,72 +1,95 @@
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 
+const setup = [
+    {
+        label: 'Main laptop',
+        details: 'MacBook Pro 16″ · 24 GB RAM · 1 TB SSD',
+    },
+    {
+        label: 'Desktop',
+        details:
+            'AMD Radeon RX 6750 XT · MSI Pro A620M-E · 32 GB (16×2) DDR5 6000 MHz',
+    },
+    {
+        label: 'Peripherals',
+        details: 'Logitech G304 mouse · ND75 keyboard',
+    },
+] as const;
+
 export default function More() {
     return (
         <>
             <Navbar />
             <main className="flex-1">
-                <div className="text-muted flex flex-col gap-2 leading-7">
-                    <img
-                        src="/hkg_night_sky.jpeg"
-                        alt="Picture of Hong Kong building at night"
-                        className="h-80 w-full object-cover"
-                    />
-                    <p>
-                        I started learning coding in March 2020. Around the same
-                        time I tried installing ubuntu, failed and that's how I
-                        got into Linux. I picked up C++, then Python then moved
-                        on to Android development and tried a lot of other
-                        technologies.
+                <section className="mb-12">
+                    <h1 className="hero-name text-foreground text-[3rem] leading-none">
+                        More
+                    </h1>
+                    <p className="text-muted mt-2 text-sm leading-6">
+                        A few things beyond work.
                     </p>
-                    <p>
-                        What started as just experimenting slowly turned into
-                        something I wanted to do seriously. Linux and
-                        open-source became a big part of my life, and later I
-                        got into blockchain and crypto. Been enjoying it since.
-                    </p>
-                    <p>
-                        Outside of that, I like city skylines (Hong Kong is a
-                        favorite), Formula 1, anime and sci-fi movies.
-                    </p>
-                    <p>Here's what I use:</p>
-                    <div>
-                        <div className="space-y-2">
-                            <div>
-                                <h2 className="text-foreground text-md font-semibold">
-                                    main laptop
-                                </h2>
-                                <ul className="list-inside list-disc">
-                                    <li>MacBook Pro 16"</li>
-                                    <li>24 GB RAM</li>
-                                    <li>1 TB SSD</li>
-                                </ul>
-                            </div>
+                </section>
 
-                            <div>
-                                <h2 className="text-foreground text-md font-semibold">
-                                    pc
-                                </h2>
-                                <ul className="list-inside list-disc">
-                                    <li>GPU: AMD Radeon RX 6750 XT</li>
-                                    <li>Motherboard: MSI Pro A620M-E</li>
-                                    <li>RAM: 32 GB (16×2) DDR5 6000 MHz</li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h2 className="text-foreground text-md font-semibold">
-                                    others
-                                </h2>
-                                <ul className="list-inside list-disc">
-                                    <li>Mouse: Logitech G304</li>
-                                    <li>Keyboard: ND75</li>
-                                </ul>
-                            </div>
+                <div>
+                    <figure>
+                        <div className="border-outline bg-surface-low aspect-video overflow-hidden rounded-lg border">
+                            <img
+                                src="/hkg_night_sky.jpeg"
+                                alt="Hong Kong buildings beneath the night sky"
+                                className="h-full w-full object-cover"
+                            />
                         </div>
-                    </div>
+                        <figcaption className="text-subtle mt-2 text-xs">
+                            Hong Kong at night.
+                        </figcaption>
+                    </figure>
 
-                    <p>I'll add more stuff later! gn</p>
+                    <section className="text-muted mt-10 space-y-4 text-sm leading-7">
+                        <p>
+                            I started learning coding in March 2020. Around the
+                            same time I tried installing Ubuntu, failed, and
+                            that&apos;s how I got into Linux. I picked up C++,
+                            then Python, then moved on to Android development
+                            and tried a lot of other technologies.
+                        </p>
+                        <p>
+                            What started as just experimenting slowly turned
+                            into something I wanted to do seriously. Linux and
+                            open-source became a big part of my life, and later
+                            I got into blockchain and crypto. Been enjoying it
+                            since.
+                        </p>
+                        <p>
+                            Outside of that, I like city skylines (Hong Kong is
+                            a favorite), Formula 1, anime and sci-fi movies.
+                        </p>
+                    </section>
+
+                    <section className="mt-12">
+                        <header className="mb-2 flex min-h-11 items-center">
+                            <h2 className="section-heading text-foreground text-sm leading-5">
+                                Setup
+                            </h2>
+                        </header>
+
+                        <div className="space-y-4">
+                            {setup.map((item) => (
+                                <article key={item.label} className="py-2">
+                                    <h3 className="text-foreground text-[0.95rem] leading-6 font-semibold">
+                                        {item.label}
+                                    </h3>
+                                    <p className="text-muted mt-1 text-sm leading-6">
+                                        {item.details}
+                                    </p>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+
+                    <p className="text-subtle mt-12 text-xs leading-6">
+                        I&apos;ll add more stuff later! gn
+                    </p>
                 </div>
             </main>
             <Footer />

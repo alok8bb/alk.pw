@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-function getBhopalTime() {
+function getHyderabadTime() {
     return new Date()
         .toLocaleString('en-IN', {
             timeZone: 'Asia/Kolkata',
@@ -17,7 +17,7 @@ export default function LocalTime() {
     const [currentTime, setCurrentTime] = useState<string | null>(null);
 
     useEffect(() => {
-        const updateTime = () => setCurrentTime(getBhopalTime());
+        const updateTime = () => setCurrentTime(getHyderabadTime());
 
         updateTime();
         const interval = window.setInterval(updateTime, 60_000);
@@ -27,7 +27,7 @@ export default function LocalTime() {
 
     return (
         <p className="text-subtle min-w-44 text-xs tabular-nums">
-            <time>{currentTime ?? '--:-- --'}</time> · Bhopal, India
+            <time>{currentTime ?? '--:-- --'}</time> · Hyderabad, India
         </p>
     );
 }
