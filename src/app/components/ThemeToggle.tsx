@@ -1,6 +1,7 @@
 'use client';
 
 import { Moon, Sun } from 'lucide-react';
+import type { MouseEvent, PointerEvent } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -21,10 +22,21 @@ export default function ThemeToggle() {
         } catch {}
     }
 
+    function handleClick(event: MouseEvent<HTMLButtonElement>) {
+        // Pointer input is handled on pointerup for reliable tablet taps.
+        // Keyboard and assistive-technology clicks report detail === 0.
+        if (event.detail === 0) toggleTheme();
+    }
+
+    function handlePointerUp(event: PointerEvent<HTMLButtonElement>) {
+        if (event.button === 0) toggleTheme();
+    }
+
     return (
         <button
             type="button"
-            onClick={toggleTheme}
+            onPointerUp={handlePointerUp}
+            onClick={handleClick}
             aria-label="Toggle color theme"
             title="Toggle color theme"
             className="theme-toggle text-muted hover:text-accent focus-visible:outline-accent inline-flex h-10 w-10 items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-2"

@@ -20,11 +20,11 @@ const fontVariables = [inter.variable, instrumentSerif.variable].join(' ');
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://alk.pw'),
-    title: 'Alok Pawar — Software Engineer',
+    title: 'Alok Pawar',
     description:
         'Software engineer working across web, mobile, and blockchain systems.',
     openGraph: {
-        title: 'Alok Pawar — Software Engineer',
+        title: 'Alok Pawar',
         description:
             'Software engineer working across web, mobile, and blockchain systems.',
         images: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Alok Pawar — Software Engineer',
+        title: 'Alok Pawar',
         description:
             'Software engineer working across web, mobile, and blockchain systems.',
         images: ['/og_image.png'],

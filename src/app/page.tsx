@@ -4,6 +4,7 @@ import { getAllPosts } from '@/lib/api';
 import CompanyShine from './components/CompanyShine';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+import PhotoStack from './components/PhotoStack';
 import { experiences } from './data/experience';
 import { projects } from './data/projects';
 
@@ -81,52 +82,57 @@ export default async function Home() {
             <Navbar />
 
             <main>
-                <section className="mb-20">
-                    <h1 className="hero-name text-foreground text-[3rem] leading-none">
-                        Alok Pawar
-                    </h1>
-                    <p className="text-muted mt-2 text-sm leading-6">
-                        <span className="text-foreground font-bold">
-                            Developer
-                        </span>{' '}
-                        &middot; Hyderabad, IN 🇮🇳 &middot; Remote
-                    </p>
-
-                    <div className="text-muted mt-6 max-w-[35rem] space-y-4 text-sm leading-7">
-                        <p>
-                            I'm a developer with over four years of experience
-                            building software for the web, Android and{' '}
-                            blockchains. I've worked with Go, Rust, Python,
-                            TypeScript and various languages and frameworks.
-                        </p>
-                        <p>
-                            I also spent a lot of time tinkering with Linux back
-                            in the day. These days finance, blockchains and
-                            consumer applications excite me the most.
-                        </p>
-                        <p>
-                            <span className="text-foreground font-semibold">
-                                I&apos;m open to full-time positions.
+                <section className="mb-20 md:grid md:grid-cols-[minmax(0,35rem)_1fr] md:gap-6">
+                    <div>
+                        <h1 className="hero-name text-foreground text-[3rem] leading-none">
+                            Alok Pawar
+                        </h1>
+                        <p className="text-muted mt-2 text-sm leading-6">
+                            <span className="text-foreground font-bold">
+                                Developer
                             </span>{' '}
-                            Reach me by{' '}
-                            <a
-                                href="mailto:alok8bb@gmail.com"
-                                className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
-                            >
-                                Email
-                            </a>{' '}
-                            or find me on{' '}
-                            <a
-                                href="https://t.me/broken_vortex"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
-                            >
-                                Telegram
-                            </a>
-                            .
+                            &middot; Hyderabad, IN 🇮🇳 &middot; Remote
                         </p>
+
+                        <div className="text-muted mt-6 max-w-[35rem] space-y-4 text-sm leading-7">
+                            <p>
+                                I'm a developer with over four years of
+                                experience building software for the web,
+                                Android and blockchains. I've worked with Go,
+                                Rust, Python, TypeScript and various languages
+                                and frameworks.
+                            </p>
+                            <p>
+                                I also spent a lot of time tinkering with Linux
+                                back in the day. These days finance, blockchains
+                                and consumer applications excite me the most.
+                            </p>
+                            <p>
+                                <span className="text-foreground font-semibold">
+                                    I&apos;m open to full-time positions.
+                                </span>{' '}
+                                Reach me by{' '}
+                                <a
+                                    href="mailto:alok8bb@gmail.com"
+                                    className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                                >
+                                    Email
+                                </a>{' '}
+                                or find me on{' '}
+                                <a
+                                    href="https://t.me/broken_vortex"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                                >
+                                    Telegram
+                                </a>
+                                .
+                            </p>
+                        </div>
                     </div>
+
+                    <PhotoStack />
                 </section>
 
                 <section id="writing" className="mb-20 scroll-mt-8">
