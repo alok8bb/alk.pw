@@ -10,11 +10,12 @@ export default function Chip({
     return (
         <button
             type="button"
+            aria-pressed={isActive}
             className={[
-                'focus-visible:outline-accent active:text-accent h-10 rounded-full border px-4 text-sm transition-colors duration-100 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none',
+                'focus-visible:outline-accent min-h-9 rounded-full border px-3.5 text-xs font-medium capitalize transition-colors duration-100 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none',
                 isActive
-                    ? 'border-accent text-accent bg-transparent'
-                    : 'border-outline text-muted hover:border-accent hover:text-accent bg-transparent',
+                    ? 'border-foreground bg-foreground text-background'
+                    : 'border-outline text-muted hover:border-foreground hover:bg-surface-low hover:text-foreground bg-transparent',
             ].join(' ')}
             onClick={onClick}
         >
