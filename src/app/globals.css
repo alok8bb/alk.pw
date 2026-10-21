@@ -221,9 +221,11 @@ body {
 
 .photo-stack-plane {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     display: block;
-    will-change: transform;
+    width: 10.5rem;
+    height: 7.875rem;
 }
 
 .photo-stack-card {
@@ -269,6 +271,7 @@ body {
     height: 100%;
     overflow: hidden;
     border-radius: 0.35rem;
+    clip-path: inset(0 round 0.35rem);
     background: var(--surface-high);
 }
 
@@ -277,22 +280,13 @@ body {
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
-    filter: saturate(0.88) contrast(0.96);
-    transition: filter 500ms ease;
-}
-
-.photo-stack:focus-visible .photo-stack-image {
-    filter: saturate(1) contrast(1);
+    filter: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .photo-stack:hover .photo-stack-card {
         border-color: var(--subtle);
         box-shadow: 0 14px 30px rgb(0 0 0 / 0.2);
-    }
-
-    .photo-stack:hover .photo-stack-image {
-        filter: saturate(1) contrast(1);
     }
 }
 

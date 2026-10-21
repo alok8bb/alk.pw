@@ -43,13 +43,13 @@ const photos = [
 ] as const;
 
 const restingPositions = [
-    { x: 0, y: 0, rotate: -2 },
+    { x: 0, y: 0, rotate: 0 },
     { x: 7, y: 3, rotate: 5 },
     { x: -6, y: 6, rotate: -6 },
 ];
 
 const spreadPositions = [
-    { x: 0, y: -6, rotate: -3 },
+    { x: 0, y: -6, rotate: 0 },
     { x: 14, y: 3, rotate: 7 },
     { x: -14, y: 7, rotate: -8 },
 ];
@@ -74,25 +74,30 @@ export default function PhotoStack() {
     const cycleLock = useRef(false);
     const nextInstance = useRef(initialOrder.length);
     const isSpread = isHovered || isFocused || isTouchExpanded;
-    const stackScale = isHovered
-        ? 1.32
+    const stackDimensions = isHovered
+        ? {
+              width: '17.5rem',
+              height: '13.125rem',
+              left: '-3.5rem',
+              top: '-2.625rem',
+          }
         : isFocused || isTouchExpanded
-          ? 1.16
-          : 1;
+          ? {
+                width: '12.5rem',
+                height: '9.375rem',
+                left: '-1rem',
+                top: '-0.75rem',
+            }
+          : {
+                width: '10.5rem',
+                height: '7.875rem',
+                left: '0rem',
+                top: '0rem',
+            };
     const tiltX = useMotionValue(0);
     const tiltY = useMotionValue(0);
-    const hoverScale = useMotionValue(1);
     const smoothTiltX = useSpring(tiltX, hoverSpring);
     const smoothTiltY = useSpring(tiltY, hoverSpring);
-    const smoothScale = useSpring(hoverScale, {
-        stiffness: 450,
-        damping: 20,
-        mass: 0.8,
-    });
-
-    useEffect(() => {
-        hoverScale.set(stackScale);
-    }, [hoverScale, stackScale]);
 
     useEffect(() => {
         if (!isTouchExpanded) return;
@@ -219,7 +224,13 @@ export default function PhotoStack() {
                         style={{
                             rotateX: smoothTiltX,
                             rotateY: smoothTiltY,
-                            scale: smoothScale,
+                        }}
+                        animate={stackDimensions}
+                        transition={{
+                            type: 'spring',
+                            stiffness: 380,
+                            damping: 30,
+                            mass: 0.75,
                         }}
                     >
                         {[...order].reverse().map((card) => {
@@ -249,7 +260,7 @@ export default function PhotoStack() {
                                         },
                                         spread: {
                                             ...spreadPositions[depth],
-                                            scale: depth === 0 ? 1.025 : 1,
+                                            scale: 1,
                                             opacity: 1,
                                         },
                                         rest: {
@@ -282,8 +293,12 @@ export default function PhotoStack() {
                                             alt=""
                                             fill
                                             draggable={false}
-                                            quality={95}
-                                            sizes="(min-width: 768px) 320px, 0px"
+                                            quality={100}
+                                            sizes={
+                                                depth === 0
+                                                    ? '(min-width: 768px) 480px, 0px'
+                                                    : '(min-width: 768px) 240px, 0px'
+                                            }
                                             className="photo-stack-image"
                                         />
                                         <span className="photo-stack-image-shade" />
