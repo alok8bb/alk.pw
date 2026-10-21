@@ -2,6 +2,7 @@
 
 :root {
     color-scheme: light;
+    scrollbar-gutter: stable;
     --theme-mode: light;
     --background: oklch(0.9753 0 0);
     --surface-low: oklch(0.957 0 0);
@@ -301,41 +302,6 @@ body {
     .photo-stack {
         display: block;
     }
-}
-
-.blog-post-list {
-    scrollbar-color: transparent transparent;
-    scrollbar-gutter: stable;
-    scrollbar-width: thin;
-}
-
-.blog-post-list:hover,
-.blog-post-list:focus-within {
-    scrollbar-color: var(--outline) transparent;
-}
-
-.blog-post-list::-webkit-scrollbar {
-    width: 5px;
-}
-
-.blog-post-list::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.blog-post-list::-webkit-scrollbar-thumb {
-    border-radius: 999px;
-    background: transparent;
-}
-
-.blog-post-list:hover::-webkit-scrollbar-thumb,
-.blog-post-list:focus-within::-webkit-scrollbar-thumb {
-    background: var(--outline);
-}
-
-.blog-scroll-fade {
-    background: linear-gradient(to bottom, transparent, var(--background));
-    backdrop-filter: blur(1.5px);
-    mask-image: linear-gradient(to bottom, transparent, black 70%);
 }
 
 .company-link {

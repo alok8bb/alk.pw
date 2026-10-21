@@ -22,29 +22,20 @@ export const metadata: Metadata = {
     metadataBase: new URL('https://alk.pw'),
     title: 'Alok Pawar',
     description:
-        'Software engineer working across web, mobile, and blockchain systems.',
+        'Developer working across web, mobile, and blockchain systems.',
     openGraph: {
         title: 'Alok Pawar',
         description:
-            'Software engineer working across web, mobile, and blockchain systems.',
-        images: [
-            {
-                url: '/og_image.png',
-                width: 1200,
-                height: 630,
-                alt: 'Alok Pawar',
-            },
-        ],
+            'Developer working across web, mobile, and blockchain systems.',
         url: 'https://alk.pw',
         type: 'website',
         siteName: 'alk.pw',
     },
     twitter: {
-        card: 'summary_large_image',
+        card: 'summary',
         title: 'Alok Pawar',
         description:
-            'Software engineer working across web, mobile, and blockchain systems.',
-        images: ['/og_image.png'],
+            'Developer working across web, mobile, and blockchain systems.',
     },
 };
 
@@ -72,7 +63,7 @@ export default function RootLayout({
                 </Script>
             </head>
             <body className={`${fontVariables} h-full antialiased`}>
-                <div className="mx-auto flex min-h-screen max-w-[50rem] flex-col px-6 pt-12 pb-8 sm:pt-16 sm:pb-10">
+                <div className="mx-auto flex min-h-screen max-w-200 flex-col px-6 pt-12 pb-8 sm:pt-16 sm:pb-10">
                     {children}
                 </div>
                 <Script

@@ -23,7 +23,7 @@ export default function More() {
             <Navbar />
             <main className="flex-1">
                 <section className="mb-12">
-                    <h1 className="hero-name text-foreground text-[3rem] leading-none">
+                    <h1 className="hero-name text-foreground text-5xl leading-none">
                         More
                     </h1>
                     <p className="text-muted mt-2 text-sm leading-6">
@@ -32,20 +32,7 @@ export default function More() {
                 </section>
 
                 <div>
-                    <figure>
-                        <div className="border-outline bg-surface-low aspect-video overflow-hidden rounded-lg border">
-                            <img
-                                src="/hkg_night_sky.jpeg"
-                                alt="Hong Kong buildings beneath the night sky"
-                                className="h-full w-full object-cover"
-                            />
-                        </div>
-                        <figcaption className="text-subtle mt-2 text-xs">
-                            Hong Kong at night.
-                        </figcaption>
-                    </figure>
-
-                    <section className="text-muted mt-10 space-y-4 text-sm leading-7">
+                    <section className="text-muted space-y-4 text-sm leading-7">
                         <p>
                             I started learning coding in March 2020. Around the
                             same time I tried installing Ubuntu, failed, and

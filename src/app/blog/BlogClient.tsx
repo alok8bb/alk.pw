@@ -24,9 +24,7 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
     const [activeCategory, setActiveCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
     const [isSearchOpen, setIsSearchOpen] = useState(false);
-    const [hasMorePostsBelow, setHasMorePostsBelow] = useState(false);
     const searchInputRef = useRef<HTMLInputElement>(null);
-    const postListRef = useRef<HTMLElement>(null);
 
     // Handle keyboard shortcuts
     useEffect(() => {
@@ -54,43 +52,6 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
         }
     }, [isSearchOpen]);
 
-    useEffect(() => {
-        const postList = postListRef.current;
-        if (!postList) return;
-
-        const updateScrollFade = () => {
-            const hasOverflow =
-                postList.scrollHeight > postList.clientHeight + 1;
-            const isAtBottom =
-                postList.scrollTop + postList.clientHeight >=
-                postList.scrollHeight - 1;
-
-            setHasMorePostsBelow(hasOverflow && !isAtBottom);
-        };
-
-        postList.scrollTop = 0;
-        const frame = requestAnimationFrame(updateScrollFade);
-        const resizeObserver = new ResizeObserver(updateScrollFade);
-        resizeObserver.observe(postList);
-
-        return () => {
-            cancelAnimationFrame(frame);
-            resizeObserver.disconnect();
-        };
-    }, [activeCategory, searchQuery]);
-
-    function updatePostListFade() {
-        const postList = postListRef.current;
-        if (!postList) return;
-
-        const hasOverflow = postList.scrollHeight > postList.clientHeight + 1;
-        const isAtBottom =
-            postList.scrollTop + postList.clientHeight >=
-            postList.scrollHeight - 1;
-
-        setHasMorePostsBelow(hasOverflow && !isAtBottom);
-    }
-
     // Filter posts based on search query and category
     const filteredPosts = posts.filter((post) => {
         const matchesCategory =
@@ -105,11 +66,11 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
     return (
         <>
             <Navbar />
-            <main className="flex h-[calc(100dvh-18rem)] min-h-0 flex-none flex-col gap-6 overflow-hidden">
+            <main className="flex flex-1 flex-col gap-6">
                 {/* Header */}
                 <section className="flex flex-col gap-2">
                     <div>
-                        <h1 className="hero-name text-foreground text-[3rem] leading-none">
+                        <h1 className="hero-name text-foreground text-5xl leading-none">
                             Brokenstack
                         </h1>
                         <p className="text-muted mt-2 text-sm leading-6">
@@ -205,13 +166,9 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                 </div>
 
                 {/* Blog List */}
-                <div className="relative mt-1 min-h-0 flex-1">
-                    <section
-                        ref={postListRef}
-                        className="blog-post-list h-full space-y-4 overflow-y-auto pr-2"
-                        onScroll={updatePostListFade}
-                    >
-                        {filteredPosts.map((post) => (
+                <section className="mt-1 space-y-4">
+                    {filteredPosts.length > 0 ? (
+                        filteredPosts.map((post) => (
                             <a
                                 key={post.id}
                                 href={`/blog/${post.id}`}
@@ -221,7 +178,7 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                                     {post.title}
                                 </h2>
                                 {post.description ? (
-                                    <p className="text-muted mt-1 max-w-[31rem] truncate text-sm leading-6">
+                                    <p className="text-muted mt-1 w-full truncate text-sm leading-6">
                                         {post.description}
                                     </p>
                                 ) : null}
@@ -232,28 +189,30 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                                     )}
                                 </span>
                             </a>
-                        ))}
-                    </section>
-                    <div
-                        aria-hidden="true"
-                        className={`blog-scroll-fade pointer-events-none absolute inset-x-0 bottom-0 h-14 transition-opacity duration-150 motion-reduce:transition-none ${
-                            hasMorePostsBelow ? 'opacity-100' : 'opacity-0'
-                        }`}
-                    />
-                </div>
-
-                <section className="mt-2">
-                    <p className="text-muted text-sm leading-6">
-                        More on{' '}
-                        <a
-                            href="https://blog.realogs.in/"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                        ))
+                    ) : (
+                        <div
+                            role="status"
+                            className="border-outline bg-surface-low rounded-lg border px-5 py-8 text-center"
                         >
-                            Realogs
-                            </a>
-                    </p>
+                            <p className="text-foreground text-sm font-medium">
+                                No posts found
+                            </p>
+                            <p className="text-muted mt-1 text-sm leading-6">
+                                Try another search or category.
+                            </p>
+                            <button
+                                type="button"
+                                className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent mt-3 text-xs underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                                onClick={() => {
+                                    setSearchQuery('');
+                                    setActiveCategory('all');
+                                }}
+                            >
+                                Clear filters
+                            </button>
+                        </div>
+                    )}
                 </section>
             </main>
             <Footer />

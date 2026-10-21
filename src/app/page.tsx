@@ -84,7 +84,7 @@ export default async function Home() {
             <main>
                 <section className="mb-20 md:grid md:grid-cols-[minmax(0,35rem)_1fr] md:gap-6">
                     <div>
-                        <h1 className="hero-name text-foreground text-[3rem] leading-none">
+                        <h1 className="hero-name text-foreground text-5xl leading-none">
                             Alok Pawar
                         </h1>
                         <p className="text-muted mt-2 text-sm leading-6">
@@ -94,7 +94,7 @@ export default async function Home() {
                             &middot; Hyderabad, IN 🇮🇳 &middot; Remote
                         </p>
 
-                        <div className="text-muted mt-6 max-w-[35rem] space-y-4 text-sm leading-7">
+                        <div className="text-muted mt-6 max-w-140 space-y-4 text-sm leading-7">
                             <p>
                                 I'm a developer with over four years of
                                 experience building software for the web,
@@ -197,7 +197,7 @@ export default async function Home() {
                                             )}
                                         </span>
                                     </h3>
-                                    <p className="text-muted mt-2 max-w-[35rem] text-sm leading-6">
+                                    <p className="text-muted mt-2 max-w-140 text-sm leading-6">
                                         {experience.description}
                                     </p>
                                 </div>
@@ -243,7 +243,7 @@ export default async function Home() {
                                     >
                                         {project.title}
                                     </a>
-                                    <p className="text-muted mt-1 max-w-[31rem] text-sm leading-6">
+                                    <p className="text-muted mt-1 max-w-124 text-sm leading-6">
                                         {project.description}
                                     </p>
                                 </div>
@@ -281,7 +281,7 @@ export default async function Home() {
                                         {post.title}
                                     </h3>
                                     {post.description ? (
-                                        <p className="text-muted mt-1 max-w-[29rem] text-sm leading-6">
+                                        <p className="text-muted mt-1 max-w-116 text-sm leading-6">
                                             {post.description}
                                         </p>
                                     ) : null}

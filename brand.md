@@ -4,7 +4,7 @@ _Status: established_
 
 ## Direction
 
-A compact engineering portfolio that reads like a thoughtfully typeset personal résumé: direct, understated, and specific. The interface is fully monochrome in both themes.
+A compact engineering portfolio that reads like a thoughtfully typeset personal résumé: direct, understated, and specific. The interface is monochrome at rest, with restrained company-specific color reserved for interactive identity details.
 
 ## Palette — Monochrome
 
@@ -36,8 +36,9 @@ Body, muted, subtle, accent, accent-foreground, focus-ring, and outline pairs me
 
 ## Typography
 
-- Inter is the only typeface across names, headings, navigation, body copy,
-  metadata, and code.
+- Instrument Serif is used for primary page titles and the homepage name.
+- Inter is used across section headings, navigation, body copy, metadata, and
+  code.
 - Dates and local time use Inter with tabular numerals for alignment.
 
 Keep the name modest, body text at reading size, and metadata quiet. Avoid display-sized taglines, technology badges, and decorative labels.
@@ -49,10 +50,12 @@ Write naturally and factually. Describe the path into software, the systems buil
 ## Usage
 
 - Preserve the narrow reading width and résumé-like spacing.
-- Use foreground, muted text, surfaces, and outlines only—no chromatic accent.
-- Keep Alok Pawar as the left-aligned navbar wordmark and the theme control in the footer.
-- Put writing directly after the introduction.
-- Put experience before selected work.
+- Use foreground, muted text, surfaces, and outlines for the core interface.
+- Reserve chromatic color and gradients for company-name hover and focus
+  treatments.
+- Keep navigation compact and right-aligned, with the theme control beside it.
+- Put experience and selected work before writing.
 - Keep section labels unnumbered and visually quiet.
 - Add personality through natural writing and restrained typography, not decorative UI.
-- Avoid gradients, shadows, cards, badges, arrows, status dots, hover markers, and oversized slogans.
+- Avoid decorative shadows, cards, badges, arrows, status dots, hover markers,
+  and oversized slogans.
