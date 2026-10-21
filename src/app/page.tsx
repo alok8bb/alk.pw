@@ -135,45 +135,6 @@ export default async function Home() {
                     <PhotoStack />
                 </section>
 
-                <section id="writing" className="mb-20 scroll-mt-8">
-                    <SectionHeader
-                        action={
-                            <Link
-                                href="/blog"
-                                className="text-muted decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent inline-flex min-h-10 items-center text-xs underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
-                            >
-                                All posts
-                            </Link>
-                        }
-                    >
-                        Writing
-                    </SectionHeader>
-
-                    <div className="mt-1 space-y-4">
-                        {featuredNotes.map((post) => (
-                            <Link
-                                key={post.id}
-                                href={`/blog/${post.id}`}
-                                className="group focus-visible:outline-accent flex gap-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 sm:gap-6"
-                            >
-                                <div className="min-w-0 flex-1">
-                                    <h3 className="text-foreground group-hover:text-accent group-hover:decoration-accent w-fit text-[0.95rem] leading-6 font-semibold underline decoration-transparent underline-offset-4 transition-colors duration-100 motion-reduce:transition-none">
-                                        {post.title}
-                                    </h3>
-                                    {post.description ? (
-                                        <p className="text-muted mt-1 max-w-[29rem] text-sm leading-6">
-                                            {post.description}
-                                        </p>
-                                    ) : null}
-                                </div>
-                                <span className={metaColumnClasses}>
-                                    {formatPostDate(post.pubDate)}
-                                </span>
-                            </Link>
-                        ))}
-                    </div>
-                </section>
-
                 <section id="experience" className="mb-20 scroll-mt-8">
                     <SectionHeader>Experience</SectionHeader>
 
@@ -290,6 +251,45 @@ export default async function Home() {
                                     {project.year}
                                 </span>
                             </article>
+                        ))}
+                    </div>
+                </section>
+
+                <section id="writing" className="mb-20 scroll-mt-8">
+                    <SectionHeader
+                        action={
+                            <Link
+                                href="/blog"
+                                className="text-muted decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent inline-flex min-h-10 items-center text-xs underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                            >
+                                All posts
+                            </Link>
+                        }
+                    >
+                        Writing
+                    </SectionHeader>
+
+                    <div className="mt-1 space-y-4">
+                        {featuredNotes.map((post) => (
+                            <Link
+                                key={post.id}
+                                href={`/blog/${post.id}`}
+                                className="group focus-visible:outline-accent flex gap-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 sm:gap-6"
+                            >
+                                <div className="min-w-0 flex-1">
+                                    <h3 className="text-foreground group-hover:text-accent group-hover:decoration-accent w-fit text-[0.95rem] leading-6 font-semibold underline decoration-transparent underline-offset-4 transition-colors duration-100 motion-reduce:transition-none">
+                                        {post.title}
+                                    </h3>
+                                    {post.description ? (
+                                        <p className="text-muted mt-1 max-w-[29rem] text-sm leading-6">
+                                            {post.description}
+                                        </p>
+                                    ) : null}
+                                </div>
+                                <span className={metaColumnClasses}>
+                                    {formatPostDate(post.pubDate)}
+                                </span>
+                            </Link>
                         ))}
                     </div>
                 </section>

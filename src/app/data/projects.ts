@@ -23,6 +23,16 @@ export const projects: Project[] = [
         source: 'https://github.com/alok8bb/solaris-board',
     },
     {
+        title: 'Cloneit',
+        description:
+            'An open-source CLI for downloading individual GitHub files or directories without cloning an entire repository.',
+        tags: ['Rust', 'CLI', 'Open source'],
+        category: 'CLI',
+        year: '2022',
+        featured: true,
+        source: 'https://github.com/alok8bb/cloneit',
+    },
+    {
         title: 'Payra',
         description:
             'A shared-expense program with token contributions, group proposals, voting, and settlement on Solana.',
@@ -30,7 +40,6 @@ export const projects: Project[] = [
         category: 'Solana',
         year: '2024',
         featured: true,
-        live: 'https://solscan.io/account/pAYrAkZHxebd89ojqt8pu9fBF8HWfiAcdqs8QFzk6dt?cluster=devnet',
         source: 'https://github.com/alok8bb/payra',
     },
     {
@@ -42,18 +51,6 @@ export const projects: Project[] = [
         year: '2023',
         featured: true,
         source: 'https://github.com/alok8bb/paladin',
-        live: 'https://t.me/paladin_beta_bot',
-    },
-    {
-        title: 'Cloneit',
-        description:
-            'An open-source CLI for downloading individual GitHub files or directories without cloning an entire repository.',
-        tags: ['Rust', 'CLI', 'Open source'],
-        category: 'CLI',
-        year: '2022',
-        featured: true,
-        live: 'https://github.com/alok8bb/cloneit',
-        source: 'https://github.com/alok8bb/cloneit',
     },
     {
         title: 'BlockBack',

@@ -6,7 +6,7 @@ const footerLinkClasses =
 export default function Footer() {
     return (
         <footer className="py-5">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col-reverse items-center gap-3 sm:flex-row sm:justify-between">
                 <LocalTime />
                 <nav
                     aria-label="Social links"

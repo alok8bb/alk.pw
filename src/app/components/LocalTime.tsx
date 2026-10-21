@@ -26,7 +26,7 @@ export default function LocalTime() {
     }, []);
 
     return (
-        <p className="text-subtle min-w-44 text-xs tabular-nums">
+        <p className="text-subtle text-center text-xs tabular-nums sm:min-w-44 sm:text-left">
             <time>{currentTime ?? '--:-- --'}</time> · Hyderabad, India
         </p>
     );
