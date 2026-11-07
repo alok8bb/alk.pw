@@ -5,6 +5,7 @@ import CompanyShine from './components/CompanyShine';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import PhotoStack from './components/PhotoStack';
+import SocialLinks from './components/SocialLinks';
 import { experiences } from './data/experience';
 import { projects } from './data/projects';
 
@@ -107,27 +108,23 @@ export default async function Home() {
                                 back in the day. These days finance, blockchains
                                 and consumer applications excite me the most.
                             </p>
-                            <p>
-                                <span className="text-foreground font-semibold">
-                                    I&apos;m open to full-time positions.
-                                </span>{' '}
-                                Reach me by{' '}
+                            <p className="contact-line">
+                                <span>Reach me at</span>
                                 <a
                                     href="mailto:alok8bb@gmail.com"
-                                    className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+                                    className="contact-email"
                                 >
-                                    Email
-                                </a>{' '}
-                                or find me on{' '}
-                                <a
-                                    href="https://t.me/broken_vortex"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="text-foreground decoration-outline hover:text-accent hover:decoration-accent focus-visible:outline-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
-                                >
-                                    Telegram
+                                    <svg
+                                        aria-hidden="true"
+                                        viewBox="0 0 24 24"
+                                        className="contact-email-icon"
+                                    >
+                                        <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />
+                                        <path d="m22 7-10 7L2 7" />
+                                    </svg>
+                                    <span>Email</span>
                                 </a>
-                                .
+                                <SocialLinks />
                             </p>
                         </div>
                     </div>

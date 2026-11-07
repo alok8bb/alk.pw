@@ -194,6 +194,112 @@ body {
     letter-spacing: 0.01em;
 }
 
+.contact-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.contact-email,
+.social-link {
+    display: inline-flex;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--outline);
+    border-radius: 0.58rem;
+    color: var(--foreground);
+    background: var(--surface-low);
+    transition:
+        color 120ms ease-out,
+        border-color 120ms ease-out,
+        background-color 120ms ease-out,
+        transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.contact-email {
+    gap: 0.4rem;
+    padding: 0 0.65rem;
+    text-decoration: none;
+}
+
+.contact-email-icon {
+    width: 0.95rem;
+    height: 0.95rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.social-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.social-link {
+    width: 2rem;
+}
+
+.social-links[data-animate='true'] .social-link {
+    animation: social-icon-intro 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.social-links[data-animate='true'] .social-link:nth-child(2) {
+    animation-delay: 190ms;
+}
+
+.social-links[data-animate='true'] .social-link:nth-child(3) {
+    animation-delay: 380ms;
+}
+
+.social-links[data-animate='true'] .social-link:nth-child(4) {
+    animation-delay: 570ms;
+}
+
+.social-link-icon {
+    width: 0.95rem;
+    height: 0.95rem;
+    fill: currentColor;
+}
+
+.contact-email:hover,
+.contact-email:focus-visible,
+.social-link:hover,
+.social-link:focus-visible {
+    border-color: var(--foreground);
+    color: var(--background);
+    background: var(--foreground);
+    transform: translateY(-2px);
+}
+
+.contact-email:focus-visible,
+.social-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+@keyframes social-icon-intro {
+    0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+
+    38% {
+        transform: translateY(-0.5rem) scale(1.2) rotate(-5deg);
+    }
+
+    68% {
+        transform: translateY(0.1rem) scale(0.95) rotate(2deg);
+    }
+
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
+
 .photo-stack {
     position: relative;
     display: none;
